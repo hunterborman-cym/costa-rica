@@ -11,6 +11,7 @@ import DiveCard from './DiveCard'
 import HotelBadge from './HotelBadge'
 import HighlightCard from './HighlightCard'
 import MapEmbed from './MapEmbed'
+import PullQuote from './PullQuote'
 import { dayIllustrations } from './illustrations'
 
 const categoryIcons = {
@@ -118,6 +119,9 @@ export default function DayCard({ day, isOpen, onToggle }) {
               }
               if (block.type === 'options') {
                 return <OptionsGrid key={i} items={block.items} />
+              }
+              if (block.type === 'quote') {
+                return <PullQuote key={i} text={block.text} />
               }
               if (block.type === 'route') {
                 return <RouteStrip key={i} stops={block.stops} />
