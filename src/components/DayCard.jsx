@@ -100,10 +100,12 @@ export default function DayCard({ day, isOpen, onToggle }) {
         style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
       >
         <div className="overflow-hidden">
-          {/* Hero image banner */}
+          {/* Hero image banner — uses background-image to avoid lazy-load issues in collapsed containers */}
           {heroImage && (
-            <div className="relative h-48 md:h-56 overflow-hidden">
-              <img src={heroImage} alt={day.title} className="w-full h-full object-cover" loading="lazy" />
+            <div
+              className="relative h-48 md:h-56"
+              style={{ backgroundImage: `url(${heroImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+            >
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               {day.hotel && (
                 <div className="absolute bottom-3 left-4 flex items-center gap-1.5 px-2.5 py-1 bg-black/30 backdrop-blur-sm rounded-full">

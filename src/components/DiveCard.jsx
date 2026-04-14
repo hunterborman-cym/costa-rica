@@ -3,16 +3,15 @@ import { Anchor, Fish, Waves as WavesIcon, AlertTriangle, Users, DollarSign } fr
 export default function DiveCard({ dive }) {
   return (
     <div className="relative rounded-[12px] overflow-hidden my-3">
-      {/* Background image */}
-      {dive.image && (
-        <>
-          <img src={dive.image} alt={dive.site} className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0d2a3d]/95 via-[#0d2a3d]/85 to-[#153d4f]/70" />
-        </>
-      )}
-      {!dive.image && (
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0d2a3d] to-[#153d4f]" />
-      )}
+      {/* Background */}
+      <div
+        className="absolute inset-0"
+        style={dive.image ? {
+          background: `linear-gradient(to right, rgba(13,42,61,0.95), rgba(13,42,61,0.85), rgba(21,61,79,0.70)), url(${dive.image}) center/cover`
+        } : {
+          background: 'linear-gradient(135deg, #0d2a3d, #153d4f)'
+        }}
+      />
 
       <div className="relative z-10 p-5 text-white">
         <div className="flex items-center gap-2 mb-3">
