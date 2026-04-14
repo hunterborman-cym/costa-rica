@@ -30,6 +30,12 @@ export default function App() {
 
       {/* Footer */}
       <footer className="py-10 text-center border-t border-border-light">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="mb-4 px-4 py-2 bg-white border border-border-light rounded-full text-[0.65rem] font-mono tracking-wider uppercase text-smoke hover:text-volcanic hover:border-border hover:shadow-sm transition-all duration-200 cursor-pointer"
+        >
+          Back to top
+        </button>
         <p className="font-mono text-[0.6rem] tracking-[0.15em] uppercase text-smoke-light mb-2">
           Pura Vida &middot; May 2026
         </p>
