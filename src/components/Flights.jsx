@@ -24,7 +24,11 @@ export default function Flights() {
                 {/* Airline + date row */}
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`w-10 h-10 rounded-[10px] flex items-center justify-center flex-shrink-0 ${f.code === 'UA' ? 'bg-[#0032A0]' : 'bg-[#01426A]'}`}>
-                    <span className="font-mono text-[0.65rem] font-bold text-white">{f.code}</span>
+                    {f.code === 'UA' ? (
+                      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-11l5 3-5 3V9z" /></svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z" /></svg>
+                    )}
                   </div>
                   <div>
                     <p className="font-body text-[0.78rem] font-medium text-volcanic">{f.airline} {f.number}</p>

@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+import confetti from 'canvas-confetti'
 import { bookingItems } from '../data/booking'
 import BookingItem from './BookingItem'
 import { useLocalStorage } from '../hooks/useLocalStorage'
@@ -6,6 +8,7 @@ export default function Booking() {
   const [checkedIds, setCheckedIds] = useLocalStorage('cr-booking-checked',
     bookingItems.filter(b => b.preChecked).map(b => b.id)
   )
+  const prevCount = useRef(checkedIds.length)
 
   function toggle(id) {
     setCheckedIds(prev =>
@@ -16,6 +19,19 @@ export default function Booking() {
   const checkedCount = checkedIds.length
   const totalCount = bookingItems.length
   const pct = Math.round((checkedCount / totalCount) * 100)
+
+  // Confetti when all items checked
+  useEffect(() => {
+    if (checkedCount === totalCount && prevCount.current < totalCount) {
+      confetti({
+        particleCount: 120,
+        spread: 80,
+        origin: { y: 0.7, x: 0.5 },
+        colors: ['#4db8c9', '#d96a4f', '#2d5a3d', '#b8942f', '#f6f2eb'],
+      })
+    }
+    prevCount.current = checkedCount
+  }, [checkedCount, totalCount])
 
   return (
     <div id="booking" className="pt-16 pb-16 px-6 md:px-8 max-w-[920px] mx-auto">
@@ -40,6 +56,12 @@ export default function Booking() {
           </div>
         </div>
       </div>
+
+      {checkedCount === totalCount && (
+        <div className="mb-4 px-4 py-3 bg-jungle-mid/10 border border-jungle-mid/20 rounded-[10px] text-center">
+          <p className="font-display text-sm font-semibold text-jungle-mid">All booked! Pura Vida.</p>
+        </div>
+      )}
 
       {bookingItems.map(item => (
         <BookingItem

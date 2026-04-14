@@ -202,7 +202,7 @@ export const days = [
         { title: 'Las Pumas', subtitle: 'Jaguars & ocelots', image: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&q=80' },
         { title: 'Rio Perdido', subtitle: 'Thermal canyon resort', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80' },
       ]},
-      { type: 'backup', text: 'Backup: Ponderosa Eco Park, Las Pumas, and extra time at Rio Perdido.' },
+      { type: 'backup', text: 'Backup: Tenorio River Rapids (Class III-IV), Ponderosa Eco Park, Las Pumas, extra time at Rio Perdido.' },
     ],
   },
   {
