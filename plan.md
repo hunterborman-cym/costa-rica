@@ -1,478 +1,261 @@
-# Costa Rica Itinerary — Full Build Spec
+# Costa Rica Itinerary — Master Build Plan
 
-## Trip Overview
+## What This Is
 
-12-day Costa Rica trip, May 14–25, 2026. Two people, based out of Guanacaste province. Starts post-MCAT. Ends in Santa Monica. This page is a personal travel itinerary that should feel like a high-end editorial travel magazine crossed with a functional trip planner — not a generic template, not a Bootstrap accordion, not a travel agency site.
+A personal, interactive travel itinerary for a 12-day Costa Rica trip (May 14–25, 2026). Two people. Post-MCAT celebration. Guanacaste province. The page should feel like opening a coffee-table travel book that also happens to be functional — not a travel agency template, not a Bootstrap accordion, not a generic React demo.
 
----
-
-## Tech Stack
-
-| Layer | Choice | Why |
-|---|---|---|
-| Framework | **React + Vite** | Fast dev, HMR, modern bundling |
-| Styling | **Tailwind CSS v3** | Utility-first, purge = small bundle |
-| Animations | **Framer Motion** | Spring physics, layout animations, scroll-triggered |
-| Icons | **Lucide React** | Clean, consistent SVG icons |
-| Fonts | **Google Fonts** (via @import) | Playfair Display, Outfit, JetBrains Mono |
-| State | React `useState` + `useLocalStorage` hook | Checklist persistence |
-| Build | **Vite** | Sub-second HMR |
-
-No Next.js needed — this is a static personal page, not a server-side app.
+**Live:** https://github.com/hunterborman-cym/costa-rica
+**Dev:** `npm install && npm run dev` → `localhost:5173`
 
 ---
 
-## Project Structure
+## What's Already Built
 
-```
-costa-rica/
-├── index.html                  # Vite entry point
-├── package.json
-├── vite.config.js
-├── tailwind.config.js
-├── postcss.config.js
-├── src/
-│   ├── main.jsx                # React root, mount
-│   ├── App.jsx                 # Layout shell: ScrollProgress + Nav + sections
-│   ├── index.css               # Tailwind directives + custom CSS vars + keyframes
-│   │
-│   ├── data/
-│   │   ├── days.js             # All 12 day objects (title, date, type, drive, body, tags)
-│   │   ├── budget.js           # Budget categories + line items
-│   │   ├── flights.js          # Flight records
-│   │   └── booking.js          # Booking checklist items
-│   │
-│   ├── components/
-│   │   ├── ScrollProgress.jsx  # Thin coral progress bar pinned to top
-│   │   ├── Hero.jsx            # Full-viewport hero + countdown timer
-│   │   ├── Nav.jsx             # Sticky frosted glass nav with scroll-spy
-│   │   ├── TimelineStrip.jsx   # Horizontal 12-day visual journey map
-│   │   ├── Itinerary.jsx       # Section wrapper + day cards list
-│   │   ├── DayCard.jsx         # Collapsible day card with Framer Motion
-│   │   ├── DriveBanner.jsx     # Sand-colored drive time indicator
-│   │   ├── Callout.jsx         # Coral warning / gold backup callout box
-│   │   ├── OptionsGrid.jsx     # Flex day options pill grid
-│   │   ├── Budget.jsx          # Section wrapper + total bar + donut chart
-│   │   ├── BudgetCard.jsx      # Individual category card with line items
-│   │   ├── BudgetDonut.jsx     # SVG donut chart (hotels/flights/scuba/activities/car)
-│   │   ├── Flights.jsx         # Boarding-pass style flight cards
-│   │   ├── Booking.jsx         # Section wrapper
-│   │   └── BookingItem.jsx     # Individual checklist card with localStorage
-│   │
-│   └── hooks/
-│       ├── useScrollSpy.js     # IntersectionObserver → active nav section
-│       ├── useLocalStorage.js  # Persist checklist state
-│       └── useCountdown.js     # Live countdown to May 14
-```
+### Foundation
+- [x] React 18 + Vite 5 + Tailwind CSS 3 + Framer Motion + Lucide React
+- [x] Google Fonts: Playfair Display (display), Outfit (body), JetBrains Mono (mono)
+- [x] Color system: volcanic, jungle, celeste, coral, gold, smoke, sand
+- [x] Custom hooks: useCountdown, useScrollSpy, useLocalStorage
+- [x] 15+ components across data, hooks, and UI layers
 
----
+### Hero Section
+- [x] Full-viewport with Unsplash aerial jungle canopy background
+- [x] Dark gradient overlay with radial celeste/coral accents
+- [x] SVG noise texture at low opacity
+- [x] Staggered fadeUp entrance: eyebrow → title → chips → countdown
+- [x] Live countdown timer to May 14 departure (ticking seconds)
+- [x] Chip badges: 12 days · Guanacaste · Bull sharks · ~$4,000 · Suzuki Jimny
+- [x] Floating celeste particle dots with gentle bob animation
 
-## Color Tokens (Tailwind extend)
+### Navigation
+- [x] Sticky frosted-glass nav (backdrop-blur + semi-transparent sand)
+- [x] Scroll-spy via IntersectionObserver — active section gets coral underline
+- [x] 4 sections: Itinerary · Budget · Flights · Booking
+- [x] Horizontally scrollable on mobile
 
-```js
-volcanic: '#121a14'
-jungle: '#1f3d2a'
-jungle-mid: '#2d5a3d'
-celeste: '#4db8c9'
-coral: '#d96a4f'
-gold: '#b8942f'
-smoke: '#7a7a88'
-smoke-light: '#a0a0ac'
-sand: '#f6f2eb'
-sand-warm: '#ede7db'
-border: '#ddd7cc'
-border-light: '#eae5dc'
-```
+### Itinerary Section
+- [x] "Expand all / Collapse all" toggle button
+- [x] Horizontal scrollable timeline strip with 12 color-coded day pills
+- [x] Clicking a timeline pill opens + scrolls to that day card
+- [x] Day cards fade up on scroll (whileInView)
 
----
+### Day Cards (the core — 12 total)
+- [x] Collapsible with CSS grid 0fr→1fr animation (smooth, no jank)
+- [x] Header: gradient badge (number + category icon) + date + title + tags + toggle chevron
+- [x] Toggle rotates 180° and inverts colors on open
+- [x] Category-specific gradients: dive=celeste, adventure=coral, travel=gray, nature=green, flex=gold, relax=brown, cave=dark
+- [x] **DriveBanner** — sand box with car icon, bold route, muted time
+- [x] **RouteStrip** — horizontal stop-by-stop visualization with colored dots, car icons, drive times between stops
+- [x] **MiniTimeline** — vertical timeline with time labels, titles, descriptions, highlight dots for key moments
+- [x] **ActivityCard** — inline cards with icon, name, duration, difficulty, cost
+- [x] **DiveCard** — dark teal card with underwater photo background, stats grid (tanks/wildlife/level/operator), species pills
+- [x] **HighlightCard** — photo cards with Unsplash images, gradient overlay, title + subtitle
+- [x] **HotelBadge** — "Sleeping at [hotel name]" with bed icon
+- [x] **Callout** — coral warning (Bat Islands weather) and gold backup notes
+- [x] **OptionsGrid** — pill grid for flex day options
+- [x] **MapEmbed** — Google Maps iframe for every route (driving + boat routes)
+- [x] **Google Maps** on every driving day showing actual road routes
+- [x] **Boat route maps** for both dive days (harbor → island)
 
-## Font Stack
+### What Each Day Currently Has
+| Day | Route Strip | Timeline | Map | Dive Card | Activities | Photos | Hotel |
+|-----|------------|----------|-----|-----------|------------|--------|-------|
+| 1 Head to LA | — | MCAT 8am → Drive → Hotel | SD→LAX | — | — | — | LAX Hotel |
+| 2 Fly to CR | LAX→IAH→LIR→Bosque | 3 flights + Jimny | LIR→Bosque | — | — | — | Bosque del Mar |
+| 3 Catalina Dive | — | — | Coco→Catalina, Bosque→Waldorf | Catalina (manta bg) | — | Catalina, Waldorf | Waldorf |
+| 4 Rincón | Waldorf→Leona→Pailas→Waldorf | Morning/Afternoon/Late | Waldorf→Leona→NP | — | La Leona, Las Pailas | Blue Pools, Cave, Mud | Waldorf |
+| 5 Bat Islands | — | — | Coco→Bat Islands | Bat Islands (shark bg) | — | — | Waldorf |
+| 6 Palo Verde | Waldorf→PV→Waldorf | — | Waldorf→PV | — | Boat Tour | River, Spoonbills | Waldorf |
+| 7 Flex Day | — | — | — | — | — | — | Waldorf |
+| 8 Caves+Pumas | Waldorf→BH→Pumas→RP | Morning/Mid/Afternoon | Full 4-stop route | — | Cave, Las Pumas | Caves, Pumas, RP | Rio Perdido |
+| 9 Rio Perdido | — | — | — | — | Trails, Float, Tubing | Thermal, Canyon | Rio Perdido |
+| 10 Tenorio | RP→Tenorio→Heliconias | 4-part day | RP→Tenorio→Heliconias | — | Río Celeste, Birding | Río Celeste, Bridges | Bijagua |
+| 11 Fly Home | Bijagua→LIR→LAX→SM | 3-part day | Bijagua→LIR | — | — | — | The Georgian |
+| 12 San Diego | — | — | SM→SD | — | — | — | Home |
 
-```
-Display:  'Playfair Display', serif    → section titles, hero h1, day titles
-Body:     'Outfit', sans-serif         → all body text, UI labels
-Mono:     'JetBrains Mono', monospace  → dates, codes, amounts, nav links
-```
+### Budget Section
+- [x] Dark volcanic total bar: "~$4,000" + points breakdown
+- [x] SVG donut chart with 5 colored segments + "$3.9k CASH TOTAL" center text
+- [x] Legend: Hotels 34%, Flights 18%, Scuba 15%, Activities 19%, Car 13%
+- [x] 5 category cards with line items and monospace amounts
 
----
+### Flights Section
+- [x] 2 boarding-pass style cards (not 3 — United legs consolidated)
+- [x] United 654/1737: LAX → LIR "via Houston (IAH)" with route line + plane icon
+- [x] Alaska 1331: LIR → LAX
+- [x] Airline code badges (UA blue, AS dark blue)
+- [x] Cost section with dashed border separator
+- [x] Subtitle: "Total: $720 for 2 passengers, round trip"
 
-## Component Specs
+### Booking Checklist
+- [x] 7 individual cards with animated checkboxes
+- [x] Scale bounce + green fill on check, strikethrough on text
+- [x] Río Celeste pre-checked (no booking needed)
+- [x] State persists to localStorage across sessions
 
-### `ScrollProgress`
-- `position: fixed; top: 0; left: 0; z-index: 9999`
-- 3px tall coral bar
-- Width driven by `window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100`
-- Framer Motion `scaleX` on a `motion.div` with `transformOrigin: left`
-
-### `Hero`
-- `min-h-screen` dark jungle gradient (`#0a1a10 → #142a1c → #1f3d2a → #2a5538`)
-- Radial gradient accents: celeste top-right, coral bottom-left (low opacity)
-- SVG noise texture overlay at 3% opacity
-- Content pinned to bottom-left: eyebrow → h1 → chips → countdown
-- **Countdown**: uses `useCountdown` hook, shows `DD days HH:MM:SS` until May 14, 2026 at 06:00 AM PT
-- Countdown displayed in a dark glass pill with monospace digits
-- **Chip badges**: 12 days · Guanacaste · Bull sharks · ~$4,000 · Suzuki Jimny
-- Framer Motion `staggerChildren` with `fadeUp` variants (0.2s delay between each)
-
-### `Nav`
-- `position: sticky; top: 0; z-index: 100`
-- `backdrop-filter: blur(24px)` + sand at 88% opacity
-- Links: Itinerary · Budget · Flights · Booking
-- Active state: coral 2px border-bottom
-- Scroll-spy via `useScrollSpy` hook
-- Mobile: horizontally scrollable, no scrollbar
-
-### `TimelineStrip`
-- Horizontal scrollable strip of 12 day pills between nav and itinerary
-- Each pill: day number + date + category color dot + short label
-- Current/upcoming day highlighted differently
-- Clicking a pill scrolls to and opens that day card
-- Color-coded by category (dive = celeste, adventure = coral, travel = gray, nature = green, flex = gold, relax = brown, cave = dark)
-
-### `DayCard`
-- Framer Motion `AnimatePresence` for body expand/collapse
-- Header: badge + date + title + tags + toggle
-- Badge: 50×50 rounded square, gradient per category, Playfair Display number
-- **Category icons** (Lucide): Anchor (dive), Mountain (adventure/hike), Plane (travel), Bird (nature), Sparkles (flex), Waves (relax), Gem (cave)
-- Body expands with `motion.div` height animation, spring physics
-- `DriveBanner` rendered if day has drive data
-- Warning callouts in coral, backup notes in gold
-- Flex day renders `OptionsGrid`
-
-### `DriveBanner`
-- Sand background, car icon (Lucide `Car`), route text bold + muted time
-- `border-radius: 10px`, subtle border
-
-### `Budget`
-- Total bar: dark volcanic card, large serif "$~4,000", points on right
-- `BudgetDonut` SVG chart: 5-segment donut, each segment = category % of total
-- Legend below donut
-- Grid of `BudgetCard` components (Hotels · Flights · Scuba · Activities · Car)
-
-### `BudgetDonut`
-- Pure SVG, `viewBox="0 0 200 200"`, `cx=100 cy=100 r=70`
-- Segments: Hotels 33%, Flights 18%, Scuba 15%, Activities 19%, Car 13%
-- Hover state highlights segment + shows label + amount
-- Framer Motion `pathLength` 0→1 draw animation on mount
-
-### `Flights`
-- Boarding-pass style cards (not a table)
-- Each card: airline code badge + flight number + route (FROM → TO) with arrow + cost
-- Dotted separator between left (departure) and right (cost) sections
-- `border-radius: 16px`, white bg, subtle shadow
-- Torn-edge decorative notch on left and right edges (SVG clip-path or border-radius trick)
-
-### `BookingItem`
-- Individual white card per booking item, shadow
-- Checkbox with Framer Motion scale bounce on check
-- Checked state: strikethrough text, muted colors, green filled checkbox
-- State persisted to `localStorage` via `useLocalStorage`
-- Río Celeste pre-checked (no booking needed)
+### Global
+- [x] Scroll progress bar (coral, 3px, Framer Motion spring)
+- [x] Footer: "PURA VIDA · MAY 2026"
+- [x] .gitignore, README.md
 
 ---
 
-## Data Shape Examples
+## What's Next — The Vision
 
-### Day object (`src/data/days.js`)
-```js
-{
-  id: 1,
-  num: 1,
-  date: 'Wed, May 14',
-  title: 'Head to LA',
-  type: 'travel',          // drives badge gradient + category icon
-  tags: ['Travel'],
-  drive: null,             // or { route: 'LIR → Bosque del Mar', time: '~30 min' }
-  body: [
-    { type: 'p', text: 'Done with the MCAT...' },
-  ],
-}
-```
-
-### Budget object (`src/data/budget.js`)
-```js
-{
-  category: 'Hotels',
-  amount: '$1,340',
-  note: '+ points for Waldorf & Georgian',
-  color: '#4db8c9',        // for donut segment
-  items: [
-    { label: 'LAX airport hotel', amount: '$120' },
-    ...
-  ]
-}
-```
+Everything below is what takes this from "good React app" to "the best itinerary page anyone has ever seen." Organized by priority and difficulty.
 
 ---
 
-## Animations
+### Phase 6 — Custom SVG Line Art & Illustrations
 
-| Element | Animation | Library |
-|---|---|---|
-| Hero content | staggered fadeUp (0.8s, cascading 0.2s delays) | Framer Motion |
-| Day card body | height 0→auto, opacity 0→1, spring | Framer Motion |
-| Toggle icon | rotate 0→180°, bg volcanic on open | Framer Motion |
-| Checklist checkbox | scale bounce + bg fill | Framer Motion |
-| Budget donut | pathLength 0→1 draw on scroll enter | Framer Motion |
-| Scroll progress | scaleX 0→1 | Framer Motion |
-| Timeline pills | stagger on mount | Framer Motion |
-| Boarding pass | fadeUp stagger | Framer Motion |
+The idea: hand-drawn-feeling SVG illustrations that are unique to this trip. Not stock icons. Not generic clip art. Custom line art that matches the editorial magazine aesthetic.
+
+#### Per-Day Decorative SVGs (draw on scroll)
+Each day card gets a small, elegant SVG illustration in the expanded body. These animate with a stroke-dashoffset draw effect as the card opens.
+
+- [ ] **Day 1 — Pencil + test sheet** — Simple line art of a pencil and a scantron/test bubble sheet. Represents finishing the MCAT. Draws in from left to right.
+- [ ] **Day 2 — Airplane arc** — SVG of a plane following a curved dotted path from LAX across to Costa Rica. The plane icon moves along the path as it draws. Small clouds along the way.
+- [ ] **Day 3 — Manta ray silhouette** — Elegant single-line manta ray, wings spread. Draws from center outward. Placed behind the dive card as a watermark at ~5% opacity, or as a standalone illustration.
+- [ ] **Day 4 — Volcano cross-section** — Side view of a volcano with labeled layers: magma, fumaroles, mud pots, hot springs. Educational/infographic style. Canyon with a tiny waterfall.
+- [ ] **Day 5 — Bull shark profile** — Side-profile bull shark in clean line art. Aggressive but beautiful. Maybe with depth markers on the left side (5m, 10m, 15m, 20m) like a dive gauge.
+- [ ] **Day 6 — Bird on a branch** — Roseate spoonbill or heron standing in water with reeds. Single continuous line style. Feathers detailed.
+- [ ] **Day 7 — Hammock between palms** — Two palm trees with a hammock. A drink with an umbrella. Flex day energy.
+- [ ] **Day 8 — Cave stalactites** — Cross-section of a cave with stalactites hanging from the top and a tiny figure with a headlamp climbing a ladder. Plus a jaguar face peeking from behind a rock for Las Pumas.
+- [ ] **Day 9 — Person floating on tube** — Top-down view of a person on an inner tube floating down a winding river through a canyon. The river path animates with a flowing dashed stroke. Gentle, lazy, relaxing.
+- [ ] **Day 10 — Waterfall with blue tint** — Río Celeste waterfall from the front, with the iconic turquoise pool at the base. A tiny suspension bridge in the background for Heliconias.
+- [ ] **Day 11 — Boarding pass** — Stylized line-art boarding pass with "LIR → LAX" and a tiny plane. Torn edge on the right side.
+- [ ] **Day 12 — Coastal highway** — A winding coastal road with the ocean on one side and hills on the other. A tiny car (Jimny silhouette) driving home. "Home" written at the end.
+
+#### Implementation Notes
+- Each SVG is a React component in `src/components/illustrations/`
+- Use `stroke-dasharray` + `stroke-dashoffset` for draw-on animation
+- Trigger animation when the day card opens (not on scroll — on expand)
+- Keep each SVG under 5KB
+- Color palette: use only celeste, coral, volcanic, and smoke at various opacities
+- Line weight: 1.5px for main strokes, 0.75px for details
+
+#### Dive Depth Profile SVGs
+For Day 3 and Day 5, show a proper dive profile chart — the kind divers actually use.
+
+- [ ] **Catalina Islands depth profile** — Line chart showing depth over time. 2 dives (2-tank). Max depth ~25m. Surface intervals between dives. Label: "Dive 1: Catalina Wall" and "Dive 2: Catalina Pinnacle" or similar.
+- [ ] **Bat Islands depth profile** — 3 dives (3-tank). Deeper — max ~30m. Stronger currents indicated by wavy lines. Bull shark silhouettes at depth. More dramatic profile.
+
+Format: SVG with animated draw. X-axis = time, Y-axis = depth (inverted — deeper goes down). Water surface at top with a subtle wave pattern. Small fish/shark icons at notable depths.
+
+#### Marine Life Species Cards
+For the dive days, show the expected marine life as illustrated cards.
+
+- [ ] **Species strip** — Horizontal scrollable strip of small SVG animal illustrations. Each is ~60×60px line art with the species name below.
+  - Manta ray (wings spread, top-down view)
+  - Eagle ray (spotted, side view)
+  - Whitetip reef shark (resting on bottom)
+  - Bull shark (aggressive profile)
+  - Sea turtle (swimming, side view)
+  - Moray eel (head poking from coral)
+  - Nurse shark (bottom-dwelling)
+  - Pufferfish (inflated)
 
 ---
 
-## Drive Times Reference
+### Phase 7 — Scroll-Driven Animations & Micro-Interactions
 
-All in Suzuki Jimny on Guanacaste roads:
+#### Simple & Polished (do these first)
+- [ ] **Budget donut draw animation** — Segments draw in one by one as you scroll to the budget section. Each segment takes 0.4s with 0.15s stagger.
+- [ ] **Budget amount counter** — Numbers count up from $0 to their final value (e.g., $1,340) over 1.2s when the card scrolls into view. Use `requestAnimationFrame` with easing.
+- [ ] **Flight card stagger** — Cards fade up with 0.15s delay between them as they enter viewport.
+- [ ] **Booking progress bar** — Small bar above the checklist showing "3/7 booked" that fills as you check items.
+- [ ] **Day card badge pulse** — When a day card first scrolls into view, the badge does a single subtle scale pulse (1.0 → 1.08 → 1.0) to draw attention.
+- [ ] **Timeline strip active state** — When you scroll past a day card, the corresponding timeline pill gets a subtle ring/glow to show "you're here."
+- [ ] **Smooth expand padding** — When a day card opens, add a slight translateY nudge to the cards below so they feel like they're making room.
 
-| Route | Time |
+#### Ambitious (try these, revert if janky)
+- [ ] **Hero parallax** — Background image scrolls at 0.5x speed relative to the page. Content scrolls normally. Creates depth. CSS `background-attachment: fixed` or Framer Motion `useTransform`.
+- [ ] **Floating Jimny** — Small SVG Suzuki Jimny icon that appears in the bottom-right corner during drive-heavy days and bounces gently. Like a mascot.
+- [ ] **Day card "peek" on hover** — Before opening, hovering a collapsed day card shows a thin 2px strip of the first highlight photo at the bottom edge. Teaser effect.
+- [ ] **Confetti on full checklist** — When all 7 booking items are checked, trigger a confetti burst from the checklist section. Use canvas-confetti library or CSS-only. Revert if it feels cheesy.
+- [ ] **Donut segment hover** — Hovering a donut segment scales it slightly and shows a tooltip with category name + dollar amount.
+
+#### Absurd (only if everything else is perfect)
+- [ ] **3D tilt on badges** — Day card badges tilt toward the cursor on hover using `perspective` + `rotateX/Y`. Subtle — max 5° tilt.
+- [ ] **Ambient ocean audio toggle** — Hidden button (maybe in the footer or hero) that plays a soft ocean wave loop. Fade in/out. Must be opt-in, not autoplay.
+- [ ] **Dark mode** — Full theme swap. Volcanic becomes the bg, sand becomes text. Every color token inverts. Toggle in nav or hero.
+- [ ] **Typing hero title** — "Costa Rica" types out letter by letter on first load, then the italic "Rica" color-shifts to celeste. Only on first visit (sessionStorage flag).
+
+---
+
+### Phase 8 — Maps & Route Visualization Upgrades
+
+The Google Maps iframes work but they're generic. These upgrades make the maps feel custom.
+
+- [ ] **Custom map style** — Use Google Maps JavaScript API (not embed) with a custom map style that matches the page aesthetic — muted greens, sand roads, celeste water. Remove default Google UI clutter.
+- [ ] **Animated route line** — When a map scrolls into view, the route line draws itself from origin to destination over 2s. Like watching the GPS plot the route in real time.
+- [ ] **Dive site underwater "map"** — For Catalina and Bat Islands, show a custom illustrated underwater cross-section instead of a Google Map. The ocean floor with labeled dive spots, depth markers, and marine life icons placed at their typical depths.
+- [ ] **Full trip overview map** — A standalone section (between hero and itinerary, or as a nav item) showing all 10 Costa Rica locations on a single map with numbered pins and colored connecting lines. Clicking a pin opens that day card.
+- [ ] **Boat route as dashed line** — The current boat route maps show driving directions (roads). Replace with a proper water route — a curved dashed line over the ocean from harbor to island.
+
+---
+
+### Phase 9 — Visual Polish & Typography
+
+- [ ] **Section dividers** — Between itinerary/budget/flights/booking, add a subtle SVG wave or mountain silhouette divider instead of just whitespace.
+- [ ] **Pull quotes** — For the most memorable day descriptions (Bat Islands "the big one", Río Celeste waterfall), render as large italic Playfair Display pull quotes with a thin coral left border.
+- [ ] **Day card category strip** — Thin 3px colored bar at the very top of each day card matching the category gradient. Visible even when collapsed.
+- [ ] **Photo hover zoom** — Highlight cards already have `group-hover:scale-105` on the image. Add a subtle vignette that intensifies on hover.
+- [ ] **Better drive banners** — Add a tiny Suzuki Jimny SVG icon instead of the generic car icon. Make it feel personal.
+- [ ] **Monospace flight numbers** — Style "UA 654 / 1737" and "AS 1331" in JetBrains Mono bold, like real boarding passes.
+- [ ] **Booking card day badges** — Add small colored dots matching the day's category color next to "Day 3 · Playas del Coco operators."
+- [ ] **Budget card category strip** — Thin colored top border on each budget card matching the donut segment color.
+
+---
+
+### Phase 10 — Content Enrichment
+
+- [ ] **Packing list section** — Collapsible section with categorized packing checklist: dive gear, hiking gear, documents, toiletries, electronics. Same localStorage persistence as booking.
+- [ ] **Emergency contacts** — Small card with embassy number, nearest hospital, dive emergency (DAN), hotel numbers. Collapsible, always accessible.
+- [ ] **Weather widget** — Static (not API) weather expectations for Guanacaste in May. "30°C / 86°F, afternoon thunderstorms possible, green season beginning." With a sun/cloud SVG icon.
+- [ ] **Currency converter** — Quick reference: $1 USD ≈ 510 CRC. Maybe a tiny interactive converter.
+- [ ] **Spanish phrases** — Small expandable card with essential phrases: "Pura vida", "La cuenta, por favor", "¿Dónde está...?", "Una cerveza, por favor."
+
+---
+
+### Phase 11 — Logos & Branding Assets
+
+- [ ] **Deep Blue Diving logo** — SVG recreation or clean PNG. Place in dive cards and booking items.
+- [ ] **Rich Coast Diving logo** — Same treatment.
+- [ ] **United Airlines wordmark** — Clean SVG in flight card. Replace the "UA" text badge with the actual United globe logo.
+- [ ] **Alaska Airlines wordmark** — Same. Replace "AS" with the Eskimo face logo.
+- [ ] **Waldorf Astoria crest** — For the hotel badge on days 3–7.
+- [ ] **Rio Perdido logo** — For days 8–9 hotel badge.
+- [ ] **Suzuki Jimny illustration** — Side-profile line art SVG of the Jimny. Use in the hero chip, drive banners, and as the floating mascot.
+
+---
+
+### Verified Unsplash Image Library
+
+All URLs verified working (HTTP 200) and visually confirmed:
+
+| Subject | URL |
 |---|---|
-| LIR → Hotel Bosque del Mar | ~30 min |
-| Bosque del Mar → Waldorf Astoria | ~10 min |
-| Waldorf → Rincón de la Vieja (Curubandé) | ~1 hr 30 min each way |
-| Waldorf → Palo Verde | ~1 hr 20 min each way |
-| Waldorf → Barra Honda | ~1 hr 30 min |
-| Barra Honda → Las Pumas | ~1 hr |
-| Las Pumas → Rio Perdido | ~1 hr |
-| Waldorf → Rio Perdido (direct) | ~1 hr 40 min |
-| Rio Perdido → Tenorio Volcano | ~1 hr 30 min |
-| Bijagua area → LIR | ~1 hr 20 min |
+| Costa Rica jungle canopy (hero) | `photo-1682965742594-2295b987d852` |
+| Scuba with manta rays (Catalina dive bg) | `photo-1544552866-fef1d68c69b5` |
+| Bull shark underwater (Bat Islands dive bg) | `photo-1560275619-4662e36fa65c` |
+| Volcanic mud pots | `photo-1535530992830-e25d07cfa780` |
+| Río Celeste waterfall | `photo-1633716898262-0e1469d55bb3` |
+| Roseate spoonbill | `photo-1632944683358-956ed87a3cf0` |
+| Limestone cave stalactites | `photo-1572772789959-3e9e7036a18a` |
+| Thermal river canyon | `photo-1476466606128-c9171c01d941` |
+| Hanging bridges rainforest | `photo-1611223157314-18a252c20228` |
+| Suzuki Jimny tropical | `photo-1675228205797-12a79151cd32` |
+
+Base URL: `https://images.unsplash.com/{id}?w={width}&q=80`
 
 ---
 
-## Full Itinerary Content
+## Rules
 
-### Day 1 — Wed, May 14 · Travel
-Done with the MCAT. Drive to LA, check into the airport hotel, sleep. Tomorrow the real trip begins.
-
-### Day 2 — Thu, May 15 · Travel
-**Drive:** LIR → Hotel Bosque del Mar (~30 min)
-Two flights through Houston (UA 654 LAX→IAH, UA 1737 IAH→LIR), land in Liberia by evening. Pick up the Suzuki Jimny. Drive to Hotel Bosque del Mar near Playas del Coco. First night on the Pacific coast.
-
-### Day 3 — Fri, May 16 · Dive
-**Drive:** Bosque del Mar → Waldorf (~10 min, after the dive)
-Six-hour, two-tank dive at the Catalina Islands. May is still in the window for giant manta rays, plus eagle rays and whitetip reef sharks. After the dive, transfer to the Waldorf Astoria Punta Cacique — home base for the next five nights. Dinner at the hotel.
-
-### Day 4 — Sat, May 17 · Adventure / Hike
-**Drive:** Waldorf → Curubandé (~1 hr 30 min each way)
-Morning: La Leona combo — volcanic canyons, caves, sulfur-blue river pools, waterfall inside a cave. Afternoon: 20-min drive to Las Pailas loop in the national park — mud pots, fumaroles, volcanic craters, Rio Negro Hot Springs.
-
-### Day 5 — Sun, May 18 · Dive (the big one)
-Eight-hour day, three-tank dive at Islas Murciélagos — the bull shark site. Strong currents, big animals. Just dinner and sleep after.
-**Warning:** Weather-dependent in May. Strong currents — advanced dive. Book early with Deep Blue or Rich Coast.
-
-### Day 6 — Mon, May 19 · Nature / Wildlife
-**Drive:** Waldorf → Palo Verde (~1 hr 20 min each way)
-8am boat tour through the Palo Verde wetlands on the Tempisque River. Roseate spoonbills, jabirus, herons, crocodiles, iguanas. Chill afternoon back at the Waldorf.
-
-### Day 7 — Tue, May 20 · Flex Day
-Buffer day after six straight days of going hard. Decide Sunday night after Bat Islands.
-Options: Horseback riding (Papagayo Peninsula) · Sunset catamaran (snorkeling + open bar) · Diamante Eco Park · Third dive (local reef) · ATV tour to hidden beaches · Pool, beach, spa
-
-### Day 8 — Wed, May 21 · Cave / Wildlife
-**Drive:** Waldorf → Barra Honda (~1h30) → Las Pumas (~1h) → Rio Perdido (~1h)
-Morning cave descent at Barra Honda NP — ladders, headlamps, limestone formations. Quick stop at Las Pumas Rescue Center in Cañas — jaguars, ocelots, margays. Drive to Rio Perdido, relax in pool before dinner.
-**Backup:** Llanos de Cortés waterfall, Las Pumas, extra time at Rio Perdido.
-
-### Day 9 — Thu, May 22 · Relax
-Sleep in. Canyon trails, thermal river float, tubing, hot springs — just enjoy the Rio Perdido property. Last full day before heading home.
-
-### Day 10 — Fri, May 23 · Adventure / Hike / Birding
-**Drive:** Rio Perdido → Tenorio (~1 hr 30 min)
-Tenorio Volcano NP: Río Celeste waterfall, Laguna Azul, Los Borbollones, Los Teñideros. Midday lunch break. 2:00 PM: Heliconias Hanging Bridges with private birding guide.
-
-### Day 11 — Sat, May 24 · Travel
-**Drive:** Bijagua area → LIR (~1 hr 20 min)
-Drop off Jimny, fly Liberia → LA (AS 1331). Check into The Georgian in Santa Monica. Dinner with Brittany.
-
-### Day 12 — Sun, May 25 · Travel
-Morning drive down the coast. Home.
-
----
-
-## Budget
-
-### Total: ~$4,000 + 510K Hilton points + 6K Hyatt points
-
-### Hotels — $1,340 + points
-| Night | Hotel | Cost |
-|---|---|---|
-| May 14 | LAX airport hotel | $120 |
-| May 15 | Hotel Bosque del Mar, Playas del Coco | $230 |
-| May 16–20 | Waldorf Astoria Punta Cacique (5 nights) | 510,000 Hilton Points |
-| May 21–23 | Rio Perdido (3 nights) | $750 |
-| May 24 | The Georgian, Santa Monica | $240 + 6,000 Hyatt |
-
-### Flights — $720
-| Flight | Route | Cost (for 2) |
-|---|---|---|
-| UA 654 | LAX → Houston | $360 (same ticket) |
-| UA 1737 | Houston → Liberia | — |
-| AS 1331 | Liberia → Los Angeles | $360 |
-
-### Scuba — $600
-| Day | Site | Duration | Cost |
-|---|---|---|---|
-| May 16 | Catalina Islands | ~6 hrs, 2-tank | $270 |
-| May 18 | Bat Islands (Islas Murciélagos) | ~8 hrs, 3-tank | $330 |
-
-### Activities — $740
-| Activity | Cost |
-|---|---|
-| Rincón de la Vieja (La Leona + volcanic trail) | $200 |
-| Palo Verde boat tour | $200 |
-| Bijagua birding + Río Celeste | $200 |
-| Rio Perdido tubing | $140 |
-
-### Car — $500
-| Item | Cost |
-|---|---|
-| Suzuki Jimny rental (May 15–24) | $350 |
-| Parking | $150 |
-
----
-
-## Book in Advance
-
-1. **Catalina Islands dive** — Deep Blue Diving, Rich Coast Diving, or Summer-Salt in Playas del Coco · Day 3
-2. **Bat Islands dive** — Same operators; book early, weather-dependent in May · Day 5 · Advanced
-3. **La Leona combo** — Reservation required via leonawaterfall.com · Day 4
-4. **Palo Verde boat tour** — Papagayo Tours or similar · Day 6 · 8am
-5. **Barra Honda cave descent** — Guided tours through the park · Day 8
-6. **Bijagua birding guide** — Arrange through Rio Perdido concierge · Day 10 · 2pm
-7. **Río Celeste hike** — No reservation needed, just arrive early · Day 10 ✓
-
----
-
-## Place IDs (Google Maps)
-
-| Location | Place ID |
-|---|---|
-| Liberia Airport (LIR) | `ChIJQZQl7CN-dY8RrKHqXmXX7kY` |
-| Hotel Bosque del Mar | `ChIJ6XOe5R4qno8RM10SjyMNOvs` |
-| Waldorf Astoria Punta Cacique | `ChIJbY8VN-wpno8RNTKUCGHGZnM` |
-| Rincón de la Vieja NP | `ChIJQ-6xNhZ9dY8RkFBpXUPJYBo` |
-| Palo Verde NP | `ChIJq6qqqmrDn48Rf_krkOKGUvE` |
-| Barra Honda NP | `ChIJp2l7cAW_n48RmPG2ibMHnnY` |
-| Las Pumas Rescue Center | `ChIJs-WJRN7kn48Ru78mOJ-deT4` |
-| Rio Perdido | `ChIJ3ajOzVpfdY8Rdq4ji594qnM` |
-| Tenorio Volcano NP | `ChIJB8xHJftTdY8RU912ppUhqbQ` |
-| Heliconias Hanging Bridges | `ChIJE6vVZ9JLdY8REWxtbel-KI4` |
-
----
-
-## Responsive Breakpoints
-
-| Breakpoint | Changes |
-|---|---|
-| `< 640px` | Hero 85vh, hide day tags, 2-col options, single-col budget grid, smaller nav padding |
-| `640–1024px` | Full features, tighter layout |
-| `> 1024px` | Max-width 920px centered, full experience |
-
----
-
-## Build Progress
-
-### Phase 1 — Scaffold & Foundation
-- [x] `package.json` + `vite.config.js` + `tailwind.config.js` + `postcss.config.js`
-- [x] `index.html` — Vite entry point with font preconnect
-- [x] `src/index.css` — Tailwind directives, CSS vars, keyframes, noise overlay, scrollbar
-- [x] `src/main.jsx` — React root mount
-- [x] `npm install` — all deps installed
-- [x] Vite dev server running at `localhost:5173`
-
-### Phase 2 — Data & Hooks
-- [x] `src/data/days.js` — all 12 day objects with body blocks
-- [x] `src/data/budget.js` — 5 categories with line items + donut data
-- [x] `src/data/flights.js` — 3 flight records with boarding pass data
-- [x] `src/data/booking.js` — 7 checklist items
-- [x] `src/hooks/useCountdown.js` — live countdown to May 14
-- [x] `src/hooks/useScrollSpy.js` — IntersectionObserver nav highlighting
-- [x] `src/hooks/useLocalStorage.js` — persist checklist state
-
-### Phase 3 — Core Components (Reasonable)
-- [x] `ScrollProgress` — coral 3px bar at top, Framer Motion spring
-- [x] `Hero` — full viewport, jungle gradient, countdown timer, chips, fadeUp stagger
-- [x] `Nav` — sticky frosted glass, scroll-spy active states
-- [x] `TimelineStrip` — horizontal scrollable 12-day pill bar, color-coded
-- [x] `DayCard` — expandable with Framer Motion AnimatePresence
-- [x] `DriveBanner` — sand box with car icon, route + time
-- [x] `Callout` — coral warning + gold backup variants
-- [x] `OptionsGrid` — flex day pill grid
-- [x] `Itinerary` — section wrapper, day card state management
-- [x] `Budget` — total bar + donut chart + category grid
-- [x] `BudgetCard` — individual category with line items
-- [x] `BudgetDonut` — SVG donut with draw animation
-- [x] `Flights` — boarding-pass style cards with notch effect
-- [x] `BookingItem` — checkbox with scale bounce + localStorage
-- [x] `Booking` — section wrapper with persist
-- [x] `App.jsx` — all sections wired together
-
-### Phase 4 — Polish & Bug Fixes
-- [x] Fix flights boarding pass overflow-hidden clipping issue
-- [x] Fix day card expand — replaced Framer Motion height:auto with CSS grid 0fr→1fr
-- [x] Fix flights whileInView not triggering — removed scroll animation, cards always visible
-- [x] Test day card expand/collapse animations work smoothly
-- [x] Verify scroll-spy nav highlighting all 4 sections
-- [x] Test booking checklist localStorage persistence — works, green checkbox + strikethrough
-- [ ] Mobile responsive testing (< 640px)
-- [x] Write README.md
-- [x] Add .gitignore
-
-### Phase 5 — Level Up (Getting Ambitious)
-- [x] Expand all / collapse all button for day cards
-- [x] Day card open on click from timeline strip + scroll-to
-- [x] Scroll-triggered entrance animations on day cards (whileInView fadeUp)
-- [x] Floating particle effect on hero
-- [ ] Add Unsplash hero background image (Costa Rica aerial)
-- [ ] Budget donut hover tooltip with category name + amount
-
-### Phase 5b — Rich Day Card Content (THE MOST IMPORTANT PART)
-The expanded day cards are the core of the itinerary. Each needs to feel like a mini page.
-
-- [ ] **Route visualization strip** — for multi-stop days (Day 2, 3, 8, 10, 11), show a visual step-by-step route: location pins connected by a line, with drive times between each
-- [ ] **Activity info cards** — small inline cards showing: duration, difficulty, cost, and type icon for each activity
-- [ ] **Highlight photos** — styled image-like gradient cards with location names for key spots (Catalina Islands, Bat Islands, Río Celeste, etc.)
-- [ ] **Mini timeline** — for multi-part days (Day 4: morning La Leona + afternoon Las Pailas; Day 8: caves → Las Pumas → Rio Perdido), show a vertical timeline with time slots
-- [ ] **Dive detail cards** — for Day 3 and Day 5, show tank count, expected wildlife, current strength, operator info
-- [ ] **Hotel indicator** — show where you're sleeping that night, with a bed icon
-- [ ] **Weather/season badge** — "Green season transition · May" with a small weather icon
-- [x] **Google Maps embed** — iframe for each day's route using Maps Embed API
-- [x] **MCAT context** — Day 1 now starts at 8am in San Diego, includes MCAT exam timeline
-- [x] **Boat routes** — Dive days show harbor-to-island boat routes on map
-- [x] **Flights consolidated** — 2 cards instead of 3 (United legs combined, shows "via Houston")
-- [x] **Budget donut fixed** — Rewritten with proper SVG stroke-dasharray math, center text
-
-### Phase 5c — High-Quality Images & Assets
-- [ ] **Unsplash images** — Hero background (Costa Rica aerial), and per-day photos for highlights
-- [ ] **Dive operator logos** — Deep Blue Diving, Rich Coast Diving SVG logos
-- [ ] **Airline logos** — United, Alaska Airlines logos in flight cards
-- [ ] **Hotel photos** — Key hotels (Waldorf Astoria, Rio Perdido, The Georgian)
-- [ ] **Suzuki Jimny** — Photo or illustration of the rental car
-- [ ] **Image asset library** — Organize all images in `src/assets/` directory
-
-### Ongoing — GitHub Saves
-- [x] Initial commit + push — https://github.com/hunterborman-cym/costa-rica
-- [ ] Commit after rich day cards + maps
-- [ ] Commit after images + final polish
-
-### Phase 6 — Going Absurd (Try, Keep If Perfect, Revert If Not)
-- [ ] Particle/firefly effect floating over hero (canvas or CSS)
-- [ ] Full page scroll-driven progress ring in bottom-right corner
-- [ ] 3D tilt effect on day card badges on hover
-- [ ] Confetti explosion when all booking items are checked
-- [ ] Ambient wave audio toggle (ocean sounds) as easter egg
-- [ ] Day/night mode toggle with full theme swap
-- [ ] Animated SVG route map connecting all locations
-- [ ] Typing animation on hero title on first load
-- [ ] Parallax depth layers in hero (mountains, trees, sky)
-
-### Phase 7 — Ship
-- [x] Write README.md with setup instructions
-- [x] `git init` + `git add` + `git commit`
-- [x] Push to GitHub — https://github.com/hunterborman-cym/costa-rica
-
-### Rules
-- Start reasonable, get absurd.
-- If an absurd feature doesn't look perfect → revert it, don't ship broken.
-- Perfection on what's there > subpar things that don't work out.
-- Save to GitHub once the reasonable version is polished.
+1. **Start reasonable, get absurd.** Nail the basics before adding confetti.
+2. **If an absurd feature doesn't look perfect → revert.** Don't ship broken. Git makes this easy.
+3. **Perfection on what's there > subpar new things.** A polished donut chart beats a janky 3D globe.
+4. **Test in Chrome with screenshots.** Every change gets verified visually.
+5. **Commit often.** Every milestone gets pushed to GitHub.
+6. **The day card content is king.** Everything else (hero, nav, budget) exists to serve the itinerary. If time is limited, spend it on making day cards richer.

@@ -11,6 +11,7 @@ import DiveCard from './DiveCard'
 import HotelBadge from './HotelBadge'
 import HighlightCard from './HighlightCard'
 import MapEmbed from './MapEmbed'
+import { dayIllustrations } from './illustrations'
 
 const categoryIcons = {
   dive: Anchor,
@@ -147,6 +148,16 @@ export default function DayCard({ day, isOpen, onToggle }) {
               }
               return null
             })}
+
+            {/* Day illustration */}
+            {dayIllustrations[day.id] && (() => {
+              const Illustration = dayIllustrations[day.id]
+              return (
+                <div className="mt-4 mb-2 flex justify-center">
+                  <Illustration animate={isOpen} className="w-full max-w-[320px] opacity-60" />
+                </div>
+              )
+            })()}
 
             {/* Hotel badge */}
             {day.hotel && <HotelBadge name={day.hotel} />}
