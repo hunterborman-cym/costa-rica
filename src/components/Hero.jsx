@@ -29,8 +29,13 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-end px-6 pb-16 pt-12 md:px-10 md:pb-20 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a1a10] via-[#142a1c] via-[#1f3d2a] to-[#2a5538]" />
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1518259102261-b40117eabbc0?w=1920&q=80')` }}
+      />
+      {/* Dark overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a1a10]/80 via-[#142a1c]/70 via-[#1f3d2a]/75 to-[#2a5538]/85" />
 
       {/* Radial accents */}
       <div
