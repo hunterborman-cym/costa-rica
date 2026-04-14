@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { days } from '../data/days'
 
 const typeColors = {
@@ -23,21 +22,12 @@ const typeBorderColors = {
 
 export default function TimelineStrip({ onDayClick }) {
   return (
-    <div className="py-4 px-6 md:px-8 max-w-[920px] mx-auto">
+    <div className="py-3 px-6 md:px-8 max-w-[920px] mx-auto">
       <div className="timeline-scroll overflow-x-auto">
-        <motion.div
-          className="flex gap-2 min-w-max"
-          initial="hidden"
-          animate="show"
-          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04, delayChildren: 0.3 } } }}
-        >
+        <div className="flex gap-2 min-w-max">
           {days.map((day) => (
-            <motion.button
+            <button
               key={day.id}
-              variants={{
-                hidden: { opacity: 0, y: 10 },
-                show: { opacity: 1, y: 0 },
-              }}
               onClick={() => onDayClick?.(day.id)}
               className={`
                 flex items-center gap-2 px-3 py-2 rounded-lg border
@@ -54,9 +44,9 @@ export default function TimelineStrip({ onDayClick }) {
                   {day.title.length > 16 ? day.title.slice(0, 16) + '...' : day.title}
                 </div>
               </div>
-            </motion.button>
+            </button>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   )

@@ -50,13 +50,9 @@ export default function DayCard({ day, isOpen, onToggle }) {
   const cardRef = useRef(null)
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
       id={`day-${day.id}`}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.45, delay: 0.05 }}
       className={`
         mb-3 bg-white border rounded-card overflow-hidden transition-[box-shadow,border-color] duration-300
         ${isOpen ? 'shadow-lg border-border' : 'shadow-sm border-border-light hover:shadow-md'}
@@ -171,6 +167,6 @@ export default function DayCard({ day, isOpen, onToggle }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
