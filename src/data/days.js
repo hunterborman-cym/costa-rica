@@ -43,7 +43,7 @@ export const days = [
       ]},
       { type: 'warning', text: 'Keep passport + rental confirmation accessible. Colones not needed — USD widely accepted in Guanacaste.' },
       { type: 'map', origin: 'Daniel Oduber Quirós International Airport', destination: 'Hotel Bosque del Mar, Playa Hermosa', label: 'LIR Airport → Hotel Bosque del Mar · ~30 min' },
-      { type: 'p', text: 'First night on the Pacific coast. Settle in, grab dinner nearby, sleep off the travel.' },
+      { type: 'p', text: 'First night on the Pacific coast. Dinner in Playas del Coco, cold Imperial beer, crash early.' },
     ],
   },
   {
@@ -79,7 +79,7 @@ export const days = [
         { title: 'Catalina Islands', subtitle: 'Isla Catalina dive site', image: 'https://images.unsplash.com/photo-1511312090622-2f2c626e21b6?w=600&q=80' },
         { title: 'Waldorf Astoria', subtitle: 'Home base · 5 nights', image: 'https://images.unsplash.com/photo-1609517448522-2e108986b505?w=600&q=80' },
       ]},
-      { type: 'p', text: 'After the dive, transfer to the Waldorf Astoria Punta Cacique — home base for the next five nights. Dinner at the hotel.' },
+      { type: 'p', text: 'Short transfer to the Waldorf Astoria Punta Cacique — home base for the next five nights. Shower off the salt, dinner at the hotel restaurant.' },
       { type: 'map', origin: 'Hotel Bosque del Mar, Playa Hermosa', destination: 'Waldorf Astoria Costa Rica, Punta Cacique', label: 'Bosque del Mar → Waldorf Astoria · ~10 min' },
     ],
   },

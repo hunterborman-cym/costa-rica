@@ -12,7 +12,7 @@ import HotelBadge from './HotelBadge'
 import HighlightCard from './HighlightCard'
 import MapEmbed from './MapEmbed'
 import PullQuote from './PullQuote'
-import { dayIllustrations } from './illustrations'
+// import { dayIllustrations } from './illustrations'
 
 const categoryIcons = {
   dive: Anchor,
@@ -151,16 +151,6 @@ export default function DayCard({ day, isOpen, onToggle }) {
               }
               return null
             })}
-
-            {/* Day illustration */}
-            {dayIllustrations[day.id] && (() => {
-              const Illustration = dayIllustrations[day.id]
-              return (
-                <div className="mt-4 mb-2 flex justify-center">
-                  <Illustration animate={isOpen} className="w-full max-w-[380px] opacity-40" />
-                </div>
-              )
-            })()}
 
             {/* Hotel badge */}
             {day.hotel && <HotelBadge name={day.hotel} />}

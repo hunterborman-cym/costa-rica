@@ -15,11 +15,11 @@ export default function JimnyCard() {
             <Car size={16} className="text-coral" />
             <span className="font-display text-lg font-semibold text-volcanic">Suzuki Jimny</span>
           </div>
-          <p className="text-[0.8rem] text-smoke mb-3">Your ride for 10 days across Guanacaste. Compact 4x4, perfect for dirt roads and tight mountain switchbacks.</p>
+          <p className="text-[0.8rem] text-smoke mb-3">10 days across Guanacaste. Compact 4x4, handles the dirt roads, river crossings, and mountain switchbacks.</p>
           <div className="flex flex-wrap gap-3">
             <InfoPill icon={Calendar} text="May 15–24" />
             <InfoPill icon={MapPin} text="Pickup: LIR Airport" />
-            <InfoPill icon={Fuel} text="4WD · Manual" />
+            <InfoPill icon={Fuel} text="4WD · Automatic" />
           </div>
         </div>
       </div>
