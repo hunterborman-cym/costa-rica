@@ -36,10 +36,12 @@ export const days = [
         { name: 'Bosque del Mar', isHotel: true },
       ]},
       { type: 'timeline', events: [
-        { time: 'Morning', title: 'Fly LAX → Houston', description: 'UA 654' },
-        { time: 'Afternoon', title: 'Fly Houston → Liberia', description: 'UA 1737, land by evening' },
-        { time: 'Evening', title: 'Pick up Suzuki Jimny', description: 'Drive to Hotel Bosque del Mar near Playas del Coco' },
+        { time: '6:45 AM', title: 'Fly LAX → Houston', description: 'UA 654, ~3hr 30min' },
+        { time: '~2:00 PM', title: 'Fly Houston → Liberia', description: 'UA 1737, ~3hr 45min' },
+        { time: '~5:30 PM', title: 'Land at LIR, pick up Jimny', description: 'Rental counter, paperwork, load up' },
+        { time: '~6:00 PM', title: 'Drive to Bosque del Mar', description: '30 min along the coast to Playas del Coco' },
       ]},
+      { type: 'warning', text: 'Keep passport + rental confirmation accessible. Colones not needed — USD widely accepted in Guanacaste.' },
       { type: 'map', origin: 'Daniel Oduber Quirós International Airport', destination: 'Hotel Bosque del Mar, Playa Hermosa', label: 'LIR Airport → Hotel Bosque del Mar · ~30 min' },
       { type: 'p', text: 'First night on the Pacific coast. Settle in, grab dinner nearby, sleep off the travel.' },
     ],
@@ -54,16 +56,24 @@ export const days = [
     drive: { route: 'Bosque del Mar → Waldorf Astoria', time: '~10 min (after the dive)' },
     hotel: 'Waldorf Astoria Punta Cacique',
     body: [
+      { type: 'timeline', events: [
+        { time: '6:00 AM', title: 'Boat departs Playas del Coco harbor', description: 'Deep Blue Diving picks up from the dock', highlight: true },
+        { time: '~7:00 AM', title: 'Dive 1: Catalina Wall', description: 'Max depth ~25m, manta ray cleaning station' },
+        { time: '~9:30 AM', title: 'Surface interval', description: 'Snacks on the boat, watch for dolphins' },
+        { time: '~10:30 AM', title: 'Dive 2: Catalina Pinnacle', description: 'Eagle rays, whitetip reef sharks' },
+        { time: '~12:00 PM', title: 'Return to harbor', description: 'Back at Playas del Coco by noon' },
+        { time: '1:00 PM', title: 'Transfer to Waldorf Astoria', description: '10 min drive, check in, dinner at hotel' },
+      ]},
       { type: 'dive', data: {
         site: 'Catalina Islands',
         tanks: '2-tank, 6hr',
         wildlife: 'Giant mantas',
         level: 'Intermediate',
         operator: 'Deep Blue Diving',
+        cost: '$270 for 2',
         species: ['Giant Manta Rays', 'Eagle Rays', 'Whitetip Reef Sharks', 'Moray Eels', 'Pufferfish'],
         image: 'https://images.unsplash.com/photo-1511312090622-2f2c626e21b6?w=800&q=80',
       }},
-      { type: 'p', text: 'Boat picks up directly from Playas del Coco harbor — Deep Blue Diving runs the trip. May is still in the window for giant manta rays at Catalina.' },
       { type: 'map', origin: 'Playas del Coco, Costa Rica', destination: 'Islas Catalinas, Costa Rica', mode: 'driving', label: 'Boat route: Playas del Coco → Catalina Islands · ~45 min by boat' },
       { type: 'highlights', items: [
         { title: 'Catalina Islands', subtitle: 'Isla Catalina dive site', image: 'https://images.unsplash.com/photo-1511312090622-2f2c626e21b6?w=600&q=80' },
@@ -97,8 +107,9 @@ export const days = [
       ]},
       { type: 'activities', items: [
         { name: 'La Leona Combo', type: 'hike', duration: '~4 hrs', difficulty: 'Moderate', cost: '$100pp', bgColor: 'bg-coral/10', iconColor: 'text-coral' },
-        { name: 'Las Pailas Loop', type: 'nature', duration: '~2 hrs', difficulty: 'Easy', bgColor: 'bg-jungle-mid/10', iconColor: 'text-jungle-mid' },
+        { name: 'Las Pailas Loop', type: 'nature', duration: '~2 hrs', difficulty: 'Easy', cost: '$15pp entry', bgColor: 'bg-jungle-mid/10', iconColor: 'text-jungle-mid' },
       ]},
+      { type: 'warning', text: 'La Leona involves river crossings and slippery volcanic rock. Bring water shoes, dry bag, and towel for hot springs.' },
       { type: 'highlights', items: [
         { title: 'Blue River Pools', subtitle: 'Sulfur-tinted canyon pools', image: 'https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=600&q=80' },
         { title: 'Cave Waterfall', subtitle: 'Hidden inside volcanic rock', image: 'https://images.unsplash.com/photo-1572772789959-3e9e7036a18a?w=600&q=80' },
@@ -116,12 +127,20 @@ export const days = [
     drive: null,
     hotel: 'Waldorf Astoria Punta Cacique',
     body: [
+      { type: 'timeline', events: [
+        { time: '5:30 AM', title: 'Boat departs Playas del Coco', description: 'Early departure — 1.5 hr boat ride to Bat Islands', highlight: true },
+        { time: '~7:00 AM', title: 'Dive 1: Big Scare', description: 'Bull shark site, max depth ~30m, strong current' },
+        { time: '~9:30 AM', title: 'Dive 2: The Pillars', description: 'Rocky pinnacles, mantas and eagle rays' },
+        { time: '~12:00 PM', title: 'Dive 3: Bajo Negro', description: 'Shallower reef, nurse sharks, sea turtles' },
+        { time: '~2:00 PM', title: 'Return to harbor', description: 'Lunch on the boat. Dead tired.' },
+      ]},
       { type: 'dive', data: {
         site: 'Islas Murciélagos (Bat Islands)',
         tanks: '3-tank, 8hr',
         wildlife: 'Bull sharks',
         level: 'Advanced',
         operator: 'Deep Blue / Rich Coast',
+        cost: '$330 for 2',
         species: ['Bull Sharks', 'Giant Mantas', 'Whitetip Reefs', 'Eagle Rays', 'Sea Turtles', 'Nurse Sharks'],
         image: 'https://images.unsplash.com/photo-1750355231442-46d8a76f5863?w=800&q=80',
       }},
@@ -130,6 +149,7 @@ export const days = [
       { type: 'p', text: 'Full-day expedition — the boat leaves from Playas del Coco harbor early morning. Strong currents, deep dives, and the chance to see bull sharks up close.' },
       { type: 'p', text: "We'll be dead after this, so just dinner and sleep." },
       { type: 'warning', text: 'Weather-dependent in May. Strong currents — advanced dive. Book early with Deep Blue or Rich Coast.' },
+      { type: 'backup', text: 'If seas too rough: fallback to a second Catalina Islands dive or snorkel trip from Playas del Coco.' },
     ],
   },
   {
@@ -146,6 +166,12 @@ export const days = [
         { name: 'Waldorf', driveToNext: '1h20' },
         { name: 'Palo Verde NP', driveToNext: '1h20' },
         { name: 'Waldorf', isHotel: true },
+      ]},
+      { type: 'timeline', events: [
+        { time: '6:30 AM', title: 'Depart Waldorf', description: '~1hr 20min drive to Palo Verde' },
+        { time: '8:00 AM', title: 'Boat tour launches', description: 'Tempisque River — 3hr guided tour', highlight: true },
+        { time: '~11:00 AM', title: 'Tour ends', description: 'Drive back to Waldorf' },
+        { time: '~12:30 PM', title: 'Afternoon free', description: 'Pool, beach, or nap at the Waldorf' },
       ]},
       { type: 'map', origin: 'Waldorf Astoria Costa Rica, Punta Cacique', destination: 'Palo Verde National Park, Costa Rica', label: 'Waldorf → Palo Verde NP · ~1h20 each way' },
       { type: 'activities', items: [
@@ -197,7 +223,7 @@ export const days = [
         { time: 'Afternoon', title: 'Drive to Rio Perdido', description: 'Check in, relax in the pool before dinner' },
       ]},
       { type: 'activities', items: [
-        { name: 'Cave Descent', type: 'cave', duration: '~3 hrs', difficulty: 'Moderate', bgColor: 'bg-[#2a2a3e]/10', iconColor: 'text-[#44445a]' },
+        { name: 'Cave Descent', type: 'cave', duration: '~3 hrs', difficulty: 'Moderate', cost: '$30pp', bgColor: 'bg-[#2a2a3e]/10', iconColor: 'text-[#44445a]' },
         { name: 'Las Pumas', type: 'wildlife', duration: '~1 hr', difficulty: 'Easy', bgColor: 'bg-gold/10', iconColor: 'text-gold' },
       ]},
       { type: 'highlights', items: [
@@ -205,6 +231,7 @@ export const days = [
         { title: 'Las Pumas', subtitle: 'Jaguars & ocelots', image: 'https://images.unsplash.com/photo-1758032494801-8f8d6f8b9517?w=600&q=80' },
         { title: 'Rio Perdido', subtitle: 'Thermal canyon resort', image: 'https://images.unsplash.com/photo-1595963178022-98bafc4dd550?w=600&q=80' },
       ]},
+      { type: 'warning', text: 'Barra Honda cave requires advance reservation — they limit daily visitors. Wear closed-toe shoes with grip.' },
       { type: 'backup', text: 'Backup: Tenorio River Rapids (Class III-IV), Ponderosa Eco Park, Las Pumas, extra time at Rio Perdido.' },
     ],
   },
@@ -218,16 +245,25 @@ export const days = [
     drive: null,
     hotel: 'Rio Perdido',
     body: [
+      { type: 'timeline', events: [
+        { time: 'Sleep in', title: 'No alarm. First lazy morning of the trip.', description: 'Breakfast at the restaurant' },
+        { time: '10:00 AM', title: 'Canyon Trails', description: 'Dry forest hike through the gorge, volcanic views' },
+        { time: '12:00 PM', title: 'Lunch', description: 'On-site restaurant' },
+        { time: '2:00 PM', title: 'Thermal River Float', description: 'Float the natural hot springs canyon', highlight: true },
+        { time: '4:00 PM', title: 'Tubing', description: 'White-water tubing run through the canyon' },
+        { time: 'Evening', title: 'Hot springs + dinner', description: 'Last night before heading home' },
+      ]},
       { type: 'activities', items: [
-        { name: 'Canyon Trails', type: 'hike', duration: 'All day', difficulty: 'Easy', bgColor: 'bg-jungle-mid/10', iconColor: 'text-jungle-mid' },
+        { name: 'Canyon Trails', type: 'hike', duration: '~2 hrs', difficulty: 'Easy', bgColor: 'bg-jungle-mid/10', iconColor: 'text-jungle-mid' },
         { name: 'Thermal River Float', type: 'relax', duration: '~2 hrs', bgColor: 'bg-celeste/10', iconColor: 'text-celeste' },
         { name: 'Tubing', type: 'relax', duration: '~1 hr', cost: '$70pp', bgColor: 'bg-coral/10', iconColor: 'text-coral' },
       ]},
       { type: 'highlights', items: [
         { title: 'Thermal River', subtitle: 'Natural hot springs canyon', image: 'https://images.unsplash.com/photo-1595963178022-98bafc4dd550?w=600&q=80' },
         { title: 'Canyon Trails', subtitle: 'Dry forest hiking', image: 'https://images.unsplash.com/photo-1682965742594-2295b987d852?w=600&q=80' },
+        { title: 'Tubing', subtitle: 'White water canyon run', image: 'https://images.unsplash.com/photo-1685550904048-023814c6c9b5?w=600&q=80' },
       ]},
-      { type: 'p', text: 'Sleep in. Canyon trails, thermal river float, tubing, hot springs — just enjoy the property. Last full day before we start heading home.' },
+      { type: 'p', text: 'Last full day before heading home. Just enjoy the property.' },
     ],
   },
   {
@@ -238,7 +274,7 @@ export const days = [
     type: 'adventure',
     tags: ['Hike', 'Birding'],
     drive: { route: 'Rio Perdido → Tenorio', time: '~1 hr 30 min' },
-    hotel: 'Near Bijagua',
+    hotel: 'Heliconias Rainforest Lodge',
     body: [
       { type: 'route', stops: [
         { name: 'Rio Perdido', driveToNext: '1h30' },
@@ -253,9 +289,10 @@ export const days = [
         { time: '2:00 PM', title: 'Heliconias Hanging Bridges', description: 'Private birding guide through the canopy' },
       ]},
       { type: 'activities', items: [
-        { name: 'Río Celeste Trail', type: 'hike', duration: '~3 hrs', difficulty: 'Moderate', cost: '$100pp', bgColor: 'bg-celeste/10', iconColor: 'text-celeste' },
+        { name: 'Río Celeste Trail', type: 'hike', duration: '~3 hrs', difficulty: 'Moderate', cost: '$12pp entry', bgColor: 'bg-celeste/10', iconColor: 'text-celeste' },
         { name: 'Birding Walk', type: 'wildlife', duration: '~2 hrs', cost: '$100pp', bgColor: 'bg-gold/10', iconColor: 'text-gold' },
       ]},
+      { type: 'warning', text: 'Tenorio NP limits daily visitors — arrive before 8 AM. Swimming in Río Celeste is prohibited. Trail is muddy; bring hiking boots.' },
       { type: 'highlights', items: [
         { title: 'Río Celeste', subtitle: 'Turquoise volcanic river', image: 'https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=600&q=80' },
         { title: 'Hanging Bridges', subtitle: 'Canopy-level birding', image: 'https://images.unsplash.com/photo-1597693253938-0ba06637f6e5?w=600&q=80' },
@@ -280,9 +317,12 @@ export const days = [
       ]},
       { type: 'map', origin: 'Bijagua, Costa Rica', destination: 'Daniel Oduber Quirós International Airport', label: 'Bijagua → LIR Airport · ~1h20' },
       { type: 'timeline', events: [
-        { time: 'Morning', title: 'Drive to Liberia', description: 'Drop off the Jimny at the rental office' },
-        { time: 'Afternoon', title: 'Fly LIR → LAX', description: 'Alaska AS 1331' },
-        { time: 'Evening', title: 'The Georgian, Santa Monica', description: 'Check in, then dinner with Brittany' },
+        { time: '7:00 AM', title: 'Drive to Liberia', description: 'Drop off Jimny at rental office, return full tank' },
+        { time: '9:00 AM', title: 'Check in at LIR airport', description: 'Alaska check-in, clear security' },
+        { time: '11:20 AM', title: 'Fly LIR → LAX', description: 'AS 1331, ~5hr 25min direct', highlight: true },
+        { time: '2:45 PM', title: 'Land at LAX', description: 'Pick up bags, Uber to Santa Monica' },
+        { time: '~4:30 PM', title: 'The Georgian Hotel', description: 'Check in, shower, change for dinner' },
+        { time: '7:00 PM', title: 'Dinner with Brittany', description: 'Santa Monica — restaurant TBD' },
       ]},
     ],
   },
@@ -296,8 +336,17 @@ export const days = [
     drive: null,
     hotel: null,
     body: [
+      { type: 'route', stops: [
+        { name: 'Santa Monica', driveToNext: '2hrs' },
+        { name: 'San Diego', isHotel: true },
+      ]},
+      { type: 'timeline', events: [
+        { time: '10:00 AM', title: 'Check out of The Georgian', description: 'Grab coffee on Ocean Ave' },
+        { time: '10:30 AM', title: 'Drive PCH south', description: 'I-5 or PCH along the coast — no rush' },
+        { time: '~12:30 PM', title: 'Home', description: 'San Diego. Trip complete.' },
+      ]},
       { type: 'map', origin: 'The Georgian Hotel, Santa Monica, CA', destination: 'San Diego, CA', label: 'Santa Monica → San Diego · ~2 hrs' },
-      { type: 'p', text: 'Morning drive down the coast. Home. Trip of a lifetime, complete.' },
+      { type: 'quote', text: '12 days. 2 dives with sharks. 3 volcanoes. 500 km in a Jimny. Pura vida.' },
     ],
   },
 ]

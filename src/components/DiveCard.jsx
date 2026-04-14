@@ -1,4 +1,4 @@
-import { Anchor, Fish, Waves as WavesIcon, AlertTriangle, Users } from 'lucide-react'
+import { Anchor, Fish, Waves as WavesIcon, AlertTriangle, Users, DollarSign } from 'lucide-react'
 
 export default function DiveCard({ dive }) {
   return (
@@ -20,11 +20,12 @@ export default function DiveCard({ dive }) {
           <span className="font-display text-lg font-semibold">{dive.site}</span>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
           <DiveStat icon={WavesIcon} label="Tanks" value={dive.tanks} />
           <DiveStat icon={Fish} label="Wildlife" value={dive.wildlife} />
           <DiveStat icon={AlertTriangle} label="Level" value={dive.level} />
           <DiveStat icon={Users} label="Operator" value={dive.operator} />
+          {dive.cost && <DiveStat icon={DollarSign} label="Cost" value={dive.cost} />}
         </div>
 
         {dive.species && dive.species.length > 0 && (
