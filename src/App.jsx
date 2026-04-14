@@ -1,7 +1,6 @@
 import ScrollProgress from './components/ScrollProgress'
 import Hero from './components/Hero'
 import Nav from './components/Nav'
-import TripStats from './components/TripStats'
 import Itinerary from './components/Itinerary'
 import Budget from './components/Budget'
 import Flights from './components/Flights'
@@ -16,7 +15,6 @@ export default function App() {
       <Hero />
       <Nav />
       <main>
-        <TripStats />
         <Itinerary />
         <SectionDivider />
         <Budget />
@@ -28,7 +26,6 @@ export default function App() {
         <TripExtras />
       </main>
 
-      {/* Footer */}
       <footer className="py-10 text-center border-t border-border-light">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -36,11 +33,8 @@ export default function App() {
         >
           Back to top
         </button>
-        <p className="font-mono text-[0.6rem] tracking-[0.15em] uppercase text-smoke-light mb-2">
+        <p className="font-mono text-[0.6rem] tracking-[0.15em] uppercase text-smoke-light">
           Pura Vida &middot; May 2026
-        </p>
-        <p className="font-body text-[0.68rem] text-smoke-light/60">
-          Built with React + Tailwind + Framer Motion
         </p>
       </footer>
     </>

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Anchor, Mountain, Plane, Bird, Sparkles, Waves, Gem } from 'lucide-react'
+import { ChevronDown, Anchor, Mountain, Plane, Bird, Sparkles, Waves, Gem, Bed } from 'lucide-react'
 import DriveBanner from './DriveBanner'
 import Callout from './Callout'
 import OptionsGrid from './OptionsGrid'
@@ -8,30 +8,18 @@ import RouteStrip from './RouteStrip'
 import ActivityCard from './ActivityCard'
 import MiniTimeline from './MiniTimeline'
 import DiveCard from './DiveCard'
-import HotelBadge from './HotelBadge'
 import HighlightCard from './HighlightCard'
-import MapEmbed from './MapEmbed'
+import MapLink from './MapLink'
 import PullQuote from './PullQuote'
-// import { dayIllustrations } from './illustrations'
 
 const categoryIcons = {
-  dive: Anchor,
-  adventure: Mountain,
-  travel: Plane,
-  nature: Bird,
-  flex: Sparkles,
-  relax: Waves,
-  cave: Gem,
+  dive: Anchor, adventure: Mountain, travel: Plane,
+  nature: Bird, flex: Sparkles, relax: Waves, cave: Gem,
 }
 
 const badgeClass = {
-  dive: 'badge-dive',
-  adventure: 'badge-adventure',
-  travel: 'badge-travel',
-  nature: 'badge-nature',
-  flex: 'badge-flex',
-  relax: 'badge-relax',
-  cave: 'badge-cave',
+  dive: 'badge-dive', adventure: 'badge-adventure', travel: 'badge-travel',
+  nature: 'badge-nature', flex: 'badge-flex', relax: 'badge-relax', cave: 'badge-cave',
 }
 
 const tagStyles = {
@@ -45,9 +33,19 @@ const tagStyles = {
   Cave: 'bg-[#2a2a3e]/[0.08] text-[#44445a]',
 }
 
+// Get the first highlight image from body blocks for the hero banner
+function getHeroImage(body) {
+  for (const block of body) {
+    if (block.type === 'highlights' && block.items?.[0]?.image) return block.items[0].image
+    if (block.type === 'dive' && block.data?.image) return block.data.image
+  }
+  return null
+}
+
 export default function DayCard({ day, isOpen, onToggle }) {
   const Icon = categoryIcons[day.type] || Plane
   const cardRef = useRef(null)
+  const heroImage = getHeroImage(day.body)
 
   return (
     <div
@@ -102,61 +100,95 @@ export default function DayCard({ day, isOpen, onToggle }) {
         style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
       >
         <div className="overflow-hidden">
-          <div className="px-5 pb-5 pl-[calc(1.25rem+50px+1rem)]">
+          {/* Hero image banner */}
+          {heroImage && (
+            <div className="relative h-48 md:h-56 overflow-hidden">
+              <img src={heroImage} alt={day.title} className="w-full h-full object-cover" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              {day.hotel && (
+                <div className="absolute bottom-3 left-4 flex items-center gap-1.5 px-2.5 py-1 bg-black/30 backdrop-blur-sm rounded-full">
+                  <Bed size={10} className="text-white/80" />
+                  <span className="font-mono text-[0.5rem] tracking-wider uppercase text-white/80">{day.hotel}</span>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Content */}
+          <div className="px-5 pb-5 pt-4">
+            {/* Drive + Route in a compact bar */}
             {day.drive && <DriveBanner route={day.drive.route} time={day.drive.time} />}
 
-            {day.body.map((block, i) => {
-              if (block.type === 'p') {
-                return (
-                  <p key={i} className="text-[0.9rem] leading-[1.75] text-[#4a4a5a] mb-2.5 last:mb-0">
-                    {block.text}
-                  </p>
-                )
-              }
-              if (block.type === 'warning' || block.type === 'backup') {
-                return <Callout key={i} type={block.type} text={block.text} />
-              }
-              if (block.type === 'options') {
-                return <OptionsGrid key={i} items={block.items} />
-              }
-              if (block.type === 'quote') {
-                return <PullQuote key={i} text={block.text} />
-              }
-              if (block.type === 'route') {
-                return <RouteStrip key={i} stops={block.stops} />
-              }
-              if (block.type === 'timeline') {
-                return <MiniTimeline key={i} events={block.events} />
-              }
-              if (block.type === 'activities') {
-                return (
-                  <div key={i} className="flex flex-wrap gap-2 my-3">
-                    {block.items.map((act, j) => (
-                      <ActivityCard key={j} activity={act} />
-                    ))}
-                  </div>
-                )
-              }
-              if (block.type === 'dive') {
-                return <DiveCard key={i} dive={block.data} />
-              }
-              if (block.type === 'map') {
-                return <MapEmbed key={i} origin={block.origin} destination={block.destination} waypoints={block.waypoints} mode={block.mode} label={block.label} />
-              }
-              if (block.type === 'highlights') {
-                return (
-                  <div key={i} className="grid grid-cols-2 sm:grid-cols-3 gap-2 my-3">
-                    {block.items.map((h, j) => (
-                      <HighlightCard key={j} {...h} />
-                    ))}
-                  </div>
-                )
-              }
-              return null
-            })}
+            {/* Two-column layout for richer days */}
+            <div className="flex flex-col md:flex-row gap-5">
+              {/* Main content column */}
+              <div className="flex-1 min-w-0">
+                {day.body.map((block, i) => {
+                  if (block.type === 'p') {
+                    return <p key={i} className="text-[0.88rem] leading-[1.75] text-[#4a4a5a] mb-2.5 last:mb-0">{block.text}</p>
+                  }
+                  if (block.type === 'quote') {
+                    return <PullQuote key={i} text={block.text} />
+                  }
+                  if (block.type === 'warning' || block.type === 'backup') {
+                    return <Callout key={i} type={block.type} text={block.text} />
+                  }
+                  if (block.type === 'options') {
+                    return <OptionsGrid key={i} items={block.items} />
+                  }
+                  if (block.type === 'timeline') {
+                    return <MiniTimeline key={i} events={block.events} />
+                  }
+                  if (block.type === 'dive') {
+                    return <DiveCard key={i} dive={block.data} />
+                  }
+                  if (block.type === 'map') {
+                    return <MapLink key={i} origin={block.origin} destination={block.destination} waypoints={block.waypoints} label={block.label} />
+                  }
+                  return null
+                })}
+              </div>
 
-            {/* Hotel badge */}
-            {day.hotel && <HotelBadge name={day.hotel} />}
+              {/* Sidebar — activities + route strip (only if they exist) */}
+              {day.body.some(b => b.type === 'activities' || b.type === 'route') && (
+                <div className="md:w-[240px] flex-shrink-0 space-y-3">
+                  {day.body.map((block, i) => {
+                    if (block.type === 'route') {
+                      return <RouteStrip key={`side-${i}`} stops={block.stops} />
+                    }
+                    if (block.type === 'activities') {
+                      return (
+                        <div key={`side-${i}`} className="space-y-2">
+                          {block.items.map((act, j) => (
+                            <ActivityCard key={j} activity={act} />
+                          ))}
+                        </div>
+                      )
+                    }
+                    return null
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Highlight photos — full width, bigger */}
+            {day.body.filter(b => b.type === 'highlights').map((block, i) => (
+              <div key={`hl-${i}`} className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-4">
+                {block.items.map((h, j) => (
+                  <HighlightCard key={j} {...h} />
+                ))}
+              </div>
+            ))}
+
+            {/* Hotel badge (only if no hero image showed it) */}
+            {!heroImage && day.hotel && (
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-jungle/5 border border-jungle/10 rounded-full mt-3">
+                <Bed size={12} className="text-jungle-mid" />
+                <span className="font-mono text-[0.56rem] tracking-wider uppercase text-jungle-mid">
+                  Sleeping at {day.hotel}
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </div>

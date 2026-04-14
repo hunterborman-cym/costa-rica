@@ -1,7 +1,7 @@
 export default function HighlightCard({ title, subtitle, gradient, image }) {
   return (
     <div
-      className="relative rounded-[10px] overflow-hidden h-28 flex items-end p-3 group"
+      className="relative rounded-[10px] overflow-hidden h-36 md:h-40 flex items-end p-3.5 group"
       style={{
         background: image ? undefined : gradient,
       }}

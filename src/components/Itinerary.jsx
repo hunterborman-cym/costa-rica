@@ -2,8 +2,6 @@ import { useState, useCallback } from 'react'
 import { ChevronsDown, ChevronsUp } from 'lucide-react'
 import DayCard from './DayCard'
 import TimelineStrip from './TimelineStrip'
-import JimnyCard from './JimnyCard'
-import WeatherBadge from './WeatherBadge'
 import { days } from '../data/days'
 
 export default function Itinerary() {
@@ -43,8 +41,8 @@ export default function Itinerary() {
     <>
       <TimelineStrip onDayClick={handleDayClick} />
 
-      <div id="itinerary" className="pt-12 pb-6 px-6 md:px-8 max-w-[920px] mx-auto">
-        <div className="flex items-end justify-between mb-8">
+      <div id="itinerary" className="pt-8 pb-6 px-6 md:px-8 max-w-[920px] mx-auto">
+        <div className="flex items-end justify-between mb-6">
           <div>
             <p className="font-mono text-[0.58rem] tracking-[0.22em] uppercase text-celeste mb-1">
               Day by Day
@@ -60,11 +58,6 @@ export default function Itinerary() {
             {allOpen ? <ChevronsUp size={13} /> : <ChevronsDown size={13} />}
             {allOpen ? 'Collapse all' : 'Expand all'}
           </button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-          <JimnyCard />
-          <WeatherBadge />
         </div>
 
         {days.map((day) => (
