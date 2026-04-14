@@ -1,5 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { motion } from 'framer-motion'
 import { Clock, MapPin, Eye, DollarSign, Car } from 'lucide-react'
 import { useCountdown } from '../hooks/useCountdown'
 
@@ -27,19 +26,12 @@ function pad(n) {
 
 export default function Hero() {
   const countdown = useCountdown('2026-05-14T06:00:00-07:00')
-  const heroRef = useRef(null)
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-
   return (
-    <section ref={heroRef} className="relative min-h-screen flex flex-col justify-end px-6 pb-16 pt-12 md:px-10 md:pb-20 overflow-hidden">
-      {/* Background image with parallax */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center scale-110"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1682965742594-2295b987d852?w=1920&q=80')`,
-          y: bgY,
-        }}
+    <section className="relative min-h-screen flex flex-col justify-end px-6 pb-16 pt-12 md:px-10 md:pb-20 overflow-hidden">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1682965742594-2295b987d852?w=1920&q=80')` }}
       />
       {/* Dark overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a1a10]/80 via-[#142a1c]/70 via-[#1f3d2a]/75 to-[#2a5538]/85" />
