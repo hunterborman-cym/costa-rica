@@ -5,6 +5,7 @@ import Itinerary from './components/Itinerary'
 import Budget from './components/Budget'
 import Flights from './components/Flights'
 import Booking from './components/Booking'
+import TripExtras from './components/TripExtras'
 import SectionDivider from './components/SectionDivider'
 
 export default function App() {
@@ -21,6 +22,8 @@ export default function App() {
         <Flights />
         <SectionDivider />
         <Booking />
+        <SectionDivider />
+        <TripExtras />
       </main>
 
       {/* Footer */}
