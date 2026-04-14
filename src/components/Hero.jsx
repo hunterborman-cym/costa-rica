@@ -32,7 +32,7 @@ export default function Hero() {
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1518259102261-b40117eabbc0?w=1920&q=80')` }}
+        style={{ backgroundImage: `url('https://images.unsplash.com/photo-1682965742594-2295b987d852?w=1920&q=80')` }}
       />
       {/* Dark overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a1a10]/80 via-[#142a1c]/70 via-[#1f3d2a]/75 to-[#2a5538]/85" />
