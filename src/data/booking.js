@@ -1,0 +1,51 @@
+export const bookingItems = [
+  {
+    id: 'catalina-dive',
+    name: 'Catalina Islands dive',
+    detail: 'Deep Blue Diving, Rich Coast Diving, or Summer-Salt',
+    sub: 'Day 3 · Playas del Coco operators',
+    preChecked: false,
+  },
+  {
+    id: 'bat-islands-dive',
+    name: 'Bat Islands dive',
+    detail: 'Same operators; book early, weather-dependent',
+    sub: 'Day 5 · Advanced dive, strong currents',
+    preChecked: false,
+  },
+  {
+    id: 'la-leona',
+    name: 'La Leona combo',
+    detail: 'Reservation required via leonawaterfall.com',
+    sub: 'Day 4 · Hike + tubing',
+    preChecked: false,
+  },
+  {
+    id: 'palo-verde',
+    name: 'Palo Verde boat tour',
+    detail: 'Papagayo Tours or similar',
+    sub: 'Day 6 · 8am departure',
+    preChecked: false,
+  },
+  {
+    id: 'barra-honda',
+    name: 'Barra Honda cave descent',
+    detail: 'Guided tours through the park',
+    sub: 'Day 8 · Ladders & headlamps',
+    preChecked: false,
+  },
+  {
+    id: 'bijagua-birding',
+    name: 'Bijagua birding guide',
+    detail: 'Arrange through Rio Perdido concierge',
+    sub: 'Day 10 · 2:00 PM at Heliconias',
+    preChecked: false,
+  },
+  {
+    id: 'rio-celeste',
+    name: 'Río Celeste hike',
+    detail: 'No reservation needed, just arrive early',
+    sub: 'Day 10 · No booking required',
+    preChecked: true,
+  },
+]

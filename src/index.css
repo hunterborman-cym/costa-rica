@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --volcanic: #121a14;
+  --jungle: #1f3d2a;
+  --jungle-mid: #2d5a3d;
+  --celeste: #4db8c9;
+  --coral: #d96a4f;
+  --gold: #b8942f;
+  --smoke: #7a7a88;
+  --sand: #f6f2eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: #f6f2eb;
+  color: #121a14;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Noise texture for hero */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #ddd7cc;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b8b0a5;
+}
+
+/* Timeline strip horizontal scroll */
+.timeline-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.timeline-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Nav scroll */
+.nav-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Boarding pass notch */
+.boarding-pass {
+  position: relative;
+}
+.boarding-pass::before,
+.boarding-pass::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: #f6f2eb;
+  border-radius: 50%;
+}
+.boarding-pass::before {
+  left: -10px;
+}
+.boarding-pass::after {
+  right: -10px;
+}
+
+/* Budget donut hover */
+.donut-segment {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.donut-segment:hover {
+  opacity: 0.85;
+  transform: scale(1.04);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes drawPath {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Category badge gradients */
+.badge-dive { background: linear-gradient(135deg, #3aa8bd, #59c8d8); }
+.badge-adventure { background: linear-gradient(135deg, #c45a3c, #e07a5f); }
+.badge-travel { background: linear-gradient(135deg, #6b6b7b, #8a8a98); }
+.badge-nature { background: linear-gradient(135deg, #1f6e38, #2d9e50); }
+.badge-flex { background: linear-gradient(135deg, #a07d1f, #c9a84c); }
+.badge-relax { background: linear-gradient(135deg, #8a5c3a, #b8804e); }
+.badge-cave { background: linear-gradient(135deg, #2a2a3e, #44445a); }
