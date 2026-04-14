@@ -7,6 +7,7 @@ export const days = [
     type: 'travel',
     tags: ['Travel'],
     drive: null,
+    preview: 'MCAT at 8am in San Diego, then drive to LA for the flight tomorrow',
     hotel: 'LAX Airport Hotel',
     body: [
       { type: 'timeline', events: [
@@ -26,6 +27,7 @@ export const days = [
     title: 'Fly to Costa Rica',
     type: 'travel',
     tags: ['Travel'],
+    preview: 'LAX → Houston → Liberia. Pick up the Jimny, drive to the coast.',
     drive: { route: 'LIR → Hotel Bosque del Mar', time: '~30 min along the coast' },
     hotel: 'Hotel Bosque del Mar',
     body: [
@@ -53,6 +55,7 @@ export const days = [
     title: 'Catalina Islands Dive → Waldorf',
     type: 'dive',
     tags: ['Dive'],
+    preview: '2-tank dive at Catalina Islands — manta rays, eagle rays, reef sharks',
     drive: { route: 'Bosque del Mar → Waldorf Astoria', time: '~10 min (after the dive)' },
     hotel: 'Waldorf Astoria Punta Cacique',
     body: [
@@ -90,6 +93,7 @@ export const days = [
     title: 'Rincón de la Vieja: La Leona + Volcanic Trail',
     type: 'adventure',
     tags: ['Hike'],
+    preview: 'Volcanic canyons, sulfur-blue pools, waterfall inside a cave, mud pots',
     drive: { route: 'Waldorf → Curubandé', time: '~1 hr 30 min each way' },
     hotel: 'Waldorf Astoria Punta Cacique',
     body: [
@@ -111,9 +115,9 @@ export const days = [
       ]},
       { type: 'warning', text: 'La Leona involves river crossings and slippery volcanic rock. Bring water shoes, dry bag, and towel for hot springs.' },
       { type: 'highlights', items: [
-        { title: 'Blue River Pools', subtitle: 'Sulfur-tinted canyon pools', image: 'https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=600&q=80' },
-        { title: 'Cave Waterfall', subtitle: 'Hidden inside volcanic rock', image: 'https://images.unsplash.com/photo-1572772789959-3e9e7036a18a?w=600&q=80' },
-        { title: 'Mud Pots', subtitle: 'Bubbling volcanic mud', image: 'https://images.unsplash.com/photo-1535530992830-e25d07cfa780?w=600&q=80' },
+        { title: 'Blue River Pools', subtitle: 'Sulfur-tinted canyon pools', image: 'https://images.unsplash.com/photo-1620658927695-c33df6fb8130?w=600&q=80' },
+        { title: 'Cave Waterfall', subtitle: 'Hidden inside volcanic rock', image: 'https://images.unsplash.com/photo-1638793772999-8df79f0ef0b8?w=600&q=80' },
+        { title: 'Mud Pots', subtitle: 'Bubbling volcanic mud', image: 'https://images.unsplash.com/photo-1618316566322-dd52d059e65b?w=600&q=80' },
       ]},
     ],
   },
@@ -124,6 +128,7 @@ export const days = [
     title: 'Bat Islands Dive',
     type: 'dive',
     tags: ['Dive'],
+    preview: 'The big one. 3-tank bull shark dive at Islas Murciélagos. Advanced.',
     drive: null,
     hotel: 'Waldorf Astoria Punta Cacique',
     body: [
@@ -159,6 +164,7 @@ export const days = [
     title: 'Palo Verde Birding',
     type: 'nature',
     tags: ['Wildlife'],
+    preview: 'Boat tour: spoonbills, jabirus, crocodiles on the Tempisque River',
     drive: { route: 'Waldorf → Palo Verde', time: '~1 hr 20 min each way' },
     hotel: 'Waldorf Astoria Punta Cacique',
     body: [
@@ -178,8 +184,8 @@ export const days = [
         { name: 'Boat Tour', type: 'wildlife', duration: '~3 hrs', difficulty: 'Easy', cost: '$100pp', bgColor: 'bg-gold/10', iconColor: 'text-gold' },
       ]},
       { type: 'highlights', items: [
-        { title: 'Tempisque River', subtitle: 'Palo Verde wetlands', image: 'https://images.unsplash.com/photo-1504567961542-e24d9439a724?w=600&q=80' },
-        { title: 'Roseate Spoonbills', subtitle: 'Pink wading birds', image: 'https://images.unsplash.com/photo-1632944683358-956ed87a3cf0?w=600&q=80' },
+        { title: 'Tempisque River', subtitle: 'Palo Verde wetlands', image: 'https://images.unsplash.com/photo-1626703965617-2e8e1f009b8e?w=600&q=80' },
+        { title: 'Roseate Spoonbills', subtitle: 'Pink wading birds', image: 'https://images.unsplash.com/photo-1557401620-67270b4ea5f7?w=600&q=80' },
       ]},
       { type: 'p', text: '8am boat tour through the Palo Verde wetlands on the Tempisque River. Roseate spoonbills, jabirus, herons, crocodiles, iguanas — tons of wildlife from the boat.' },
       { type: 'p', text: 'Chill afternoon back at the Waldorf.' },
@@ -192,6 +198,7 @@ export const days = [
     title: 'Flex Day',
     type: 'flex',
     tags: ['Flex'],
+    preview: 'Buffer day. Catamaran, horseback riding, eco park, or just the pool.',
     drive: null,
     hotel: 'Waldorf Astoria Punta Cacique',
     body: [
@@ -207,6 +214,7 @@ export const days = [
     title: 'Barra Honda Caves + Las Pumas → Rio Perdido',
     type: 'cave',
     tags: ['Cave', 'Wildlife'],
+    preview: 'Cave descent, jaguar rescue center, then check into thermal canyon resort',
     drive: { route: 'Waldorf → Barra Honda → Las Pumas → Rio Perdido', time: '~1h30 + ~1h + ~1h' },
     hotel: 'Rio Perdido',
     body: [
@@ -242,6 +250,7 @@ export const days = [
     title: 'Rio Perdido Property Day',
     type: 'relax',
     tags: ['Relax'],
+    preview: 'Sleep in. Canyon trails, thermal float, tubing, hot springs all day.',
     drive: null,
     hotel: 'Rio Perdido',
     body: [
@@ -260,7 +269,7 @@ export const days = [
       ]},
       { type: 'highlights', items: [
         { title: 'Thermal River', subtitle: 'Natural hot springs canyon', image: 'https://images.unsplash.com/photo-1595963178022-98bafc4dd550?w=600&q=80' },
-        { title: 'Canyon Trails', subtitle: 'Dry forest hiking', image: 'https://images.unsplash.com/photo-1682965742594-2295b987d852?w=600&q=80' },
+        { title: 'Canyon Trails', subtitle: 'Dry forest hiking', image: 'https://images.unsplash.com/photo-1686347807198-2c18acedafe9?w=600&q=80' },
         { title: 'Tubing', subtitle: 'White water canyon run', image: 'https://images.unsplash.com/photo-1685550904048-023814c6c9b5?w=600&q=80' },
       ]},
       { type: 'p', text: 'Last full day before heading home. Just enjoy the property.' },
@@ -273,6 +282,7 @@ export const days = [
     title: 'Tenorio Volcano + Heliconias Hanging Bridges',
     type: 'adventure',
     tags: ['Hike', 'Birding'],
+    preview: 'Río Celeste waterfall, turquoise lagoon, hanging bridges with birding guide',
     drive: { route: 'Rio Perdido → Tenorio', time: '~1 hr 30 min' },
     hotel: 'Heliconias Rainforest Lodge',
     body: [
@@ -306,6 +316,7 @@ export const days = [
     title: 'Fly Home + Dinner with Brittany',
     type: 'travel',
     tags: ['Travel'],
+    preview: 'Drop off the Jimny, fly home, dinner with Brittany in Santa Monica',
     drive: { route: 'Bijagua area → LIR', time: '~1 hr 20 min to the airport' },
     hotel: 'The Georgian, Santa Monica',
     body: [
@@ -333,6 +344,7 @@ export const days = [
     title: 'Back to San Diego',
     type: 'travel',
     tags: ['Travel'],
+    preview: 'Morning drive down the coast. Home.',
     drive: null,
     hotel: null,
     body: [

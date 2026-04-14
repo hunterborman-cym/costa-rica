@@ -74,6 +74,9 @@ export default function DayCard({ day, isOpen, onToggle }) {
         <div className="min-w-0 text-left">
           <p className="font-mono text-[0.58rem] tracking-[0.08em] uppercase text-smoke-light">{day.date}</p>
           <h3 className="font-display text-[1.1rem] font-semibold text-volcanic leading-tight truncate">{day.title}</h3>
+          {!isOpen && day.preview && (
+            <p className="text-[0.72rem] text-smoke mt-0.5 truncate">{day.preview}</p>
+          )}
         </div>
 
         <div className="hidden sm:flex gap-1.5 flex-shrink-0 flex-wrap justify-end">
