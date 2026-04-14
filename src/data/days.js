@@ -66,7 +66,7 @@ export const days = [
       { type: 'map', origin: 'Playas del Coco, Costa Rica', destination: 'Islas Catalinas, Costa Rica', mode: 'driving', label: 'Boat route: Playas del Coco → Catalina Islands · ~45 min by boat' },
       { type: 'highlights', items: [
         { title: 'Catalina Islands', subtitle: 'Isla Catalina dive site', image: 'https://images.unsplash.com/photo-1544552866-fef1d68c69b5?w=600&q=80' },
-        { title: 'Waldorf Astoria', subtitle: 'Home base · 5 nights', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80' },
+        { title: 'Waldorf Astoria', subtitle: 'Home base · 5 nights', image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&q=80' },
       ]},
       { type: 'p', text: 'After the dive, transfer to the Waldorf Astoria Punta Cacique — home base for the next five nights. Dinner at the hotel.' },
       { type: 'map', origin: 'Hotel Bosque del Mar, Playa Hermosa', destination: 'Waldorf Astoria Costa Rica, Punta Cacique', label: 'Bosque del Mar → Waldorf Astoria · ~10 min' },
@@ -200,7 +200,7 @@ export const days = [
       ]},
       { type: 'highlights', items: [
         { title: 'Barra Honda Caves', subtitle: 'Limestone underground', image: 'https://images.unsplash.com/photo-1572772789959-3e9e7036a18a?w=600&q=80' },
-        { title: 'Las Pumas', subtitle: 'Jaguars & ocelots', image: 'https://images.unsplash.com/photo-1456926631375-92c8ce872def?w=600&q=80' },
+        { title: 'Las Pumas', subtitle: 'Jaguars & ocelots', image: 'https://images.unsplash.com/photo-1504173010664-32509aeebb62?w=600&q=80' },
         { title: 'Rio Perdido', subtitle: 'Thermal canyon resort', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80' },
       ]},
       { type: 'backup', text: 'Backup: Tenorio River Rapids (Class III-IV), Ponderosa Eco Park, Las Pumas, extra time at Rio Perdido.' },
