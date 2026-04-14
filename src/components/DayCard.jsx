@@ -157,7 +157,7 @@ export default function DayCard({ day, isOpen, onToggle }) {
               const Illustration = dayIllustrations[day.id]
               return (
                 <div className="mt-4 mb-2 flex justify-center">
-                  <Illustration animate={isOpen} className="w-full max-w-[320px] opacity-60" />
+                  <Illustration animate={isOpen} className="w-full max-w-[380px] opacity-40" />
                 </div>
               )
             })()}
