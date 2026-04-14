@@ -44,6 +44,30 @@ export default function Hero() {
       {/* Noise overlay */}
       <div className="noise-overlay" />
 
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 rounded-full bg-celeste/20"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.15, 0.4, 0.15],
+            }}
+            transition={{
+              duration: 4 + i * 0.8,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: i * 0.6,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Content */}
       <motion.div
         className="relative z-10 max-w-[800px]"

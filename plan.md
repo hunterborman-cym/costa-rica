@@ -419,13 +419,41 @@ Morning drive down the coast. Home.
 - [x] Add .gitignore
 
 ### Phase 5 — Level Up (Getting Ambitious)
-- [ ] Expand all / collapse all button for day cards
-- [ ] Day card open on click from timeline strip + scroll-to
+- [x] Expand all / collapse all button for day cards
+- [x] Day card open on click from timeline strip + scroll-to
+- [x] Scroll-triggered entrance animations on day cards (whileInView fadeUp)
+- [x] Floating particle effect on hero
 - [ ] Add Unsplash hero background image (Costa Rica aerial)
-- [ ] Add subtle parallax scroll on hero
-- [ ] Smooth entrance animations on day cards as they scroll into view
 - [ ] Budget donut hover tooltip with category name + amount
-- [ ] Animated number counter on budget amounts
+
+### Phase 5b — Rich Day Card Content (THE MOST IMPORTANT PART)
+The expanded day cards are the core of the itinerary. Each needs to feel like a mini page.
+
+- [ ] **Route visualization strip** — for multi-stop days (Day 2, 3, 8, 10, 11), show a visual step-by-step route: location pins connected by a line, with drive times between each
+- [ ] **Activity info cards** — small inline cards showing: duration, difficulty, cost, and type icon for each activity
+- [ ] **Highlight photos** — styled image-like gradient cards with location names for key spots (Catalina Islands, Bat Islands, Río Celeste, etc.)
+- [ ] **Mini timeline** — for multi-part days (Day 4: morning La Leona + afternoon Las Pailas; Day 8: caves → Las Pumas → Rio Perdido), show a vertical timeline with time slots
+- [ ] **Dive detail cards** — for Day 3 and Day 5, show tank count, expected wildlife, current strength, operator info
+- [ ] **Hotel indicator** — show where you're sleeping that night, with a bed icon
+- [ ] **Weather/season badge** — "Green season transition · May" with a small weather icon
+- [x] **Google Maps embed** — iframe for each day's route using Maps Embed API
+- [x] **MCAT context** — Day 1 now starts at 8am in San Diego, includes MCAT exam timeline
+- [x] **Boat routes** — Dive days show harbor-to-island boat routes on map
+- [x] **Flights consolidated** — 2 cards instead of 3 (United legs combined, shows "via Houston")
+- [x] **Budget donut fixed** — Rewritten with proper SVG stroke-dasharray math, center text
+
+### Phase 5c — High-Quality Images & Assets
+- [ ] **Unsplash images** — Hero background (Costa Rica aerial), and per-day photos for highlights
+- [ ] **Dive operator logos** — Deep Blue Diving, Rich Coast Diving SVG logos
+- [ ] **Airline logos** — United, Alaska Airlines logos in flight cards
+- [ ] **Hotel photos** — Key hotels (Waldorf Astoria, Rio Perdido, The Georgian)
+- [ ] **Suzuki Jimny** — Photo or illustration of the rental car
+- [ ] **Image asset library** — Organize all images in `src/assets/` directory
+
+### Ongoing — GitHub Saves
+- [x] Initial commit + push — https://github.com/hunterborman-cym/costa-rica
+- [ ] Commit after rich day cards + maps
+- [ ] Commit after images + final polish
 
 ### Phase 6 — Going Absurd (Try, Keep If Perfect, Revert If Not)
 - [ ] Particle/firefly effect floating over hero (canvas or CSS)
@@ -439,9 +467,9 @@ Morning drive down the coast. Home.
 - [ ] Parallax depth layers in hero (mountains, trees, sky)
 
 ### Phase 7 — Ship
-- [ ] Write README.md with setup instructions
-- [ ] `git add` + `git commit`
-- [ ] Push to GitHub
+- [x] Write README.md with setup instructions
+- [x] `git init` + `git add` + `git commit`
+- [x] Push to GitHub — https://github.com/hunterborman-cym/costa-rica
 
 ### Rules
 - Start reasonable, get absurd.

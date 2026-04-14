@@ -7,8 +7,15 @@ export const days = [
     type: 'travel',
     tags: ['Travel'],
     drive: null,
+    hotel: 'LAX Airport Hotel',
     body: [
-      { type: 'p', text: 'Done with the MCAT. Drive to LA, check into the airport hotel, sleep. Tomorrow the real trip begins.' },
+      { type: 'timeline', events: [
+        { time: '8:00 AM', title: 'MCAT Exam — San Diego', description: 'Testing center. 7+ hours. The last hurdle.', highlight: true },
+        { time: '~5:00 PM', title: 'Drive to LA', description: 'I-5 North, ~2 hours depending on traffic' },
+        { time: 'Evening', title: 'Airport hotel near LAX', description: 'Check in, crash. Tomorrow we fly.' },
+      ]},
+      { type: 'map', origin: 'San Diego, CA', destination: 'LAX Airport, Los Angeles, CA', label: 'San Diego → LAX · ~2 hrs' },
+      { type: 'p', text: 'Done with the MCAT. The hardest day is behind us — everything after this is pure reward. Drive to LA, check into the airport hotel, sleep.' },
     ],
   },
   {
@@ -19,8 +26,21 @@ export const days = [
     type: 'travel',
     tags: ['Travel'],
     drive: { route: 'LIR → Hotel Bosque del Mar', time: '~30 min along the coast' },
+    hotel: 'Hotel Bosque del Mar',
     body: [
-      { type: 'p', text: 'Two flights through Houston (UA 654 LAX→IAH, UA 1737 IAH→LIR), land in Liberia by evening. Pick up the Suzuki Jimny and cruise to Hotel Bosque del Mar near Playas del Coco — first night on the Pacific coast.' },
+      { type: 'route', stops: [
+        { name: 'LAX', driveToNext: 'flight' },
+        { name: 'Houston (IAH)', driveToNext: 'flight' },
+        { name: 'Liberia (LIR)', driveToNext: '30min' },
+        { name: 'Bosque del Mar', isHotel: true },
+      ]},
+      { type: 'timeline', events: [
+        { time: 'Morning', title: 'Fly LAX → Houston', description: 'UA 654' },
+        { time: 'Afternoon', title: 'Fly Houston → Liberia', description: 'UA 1737, land by evening' },
+        { time: 'Evening', title: 'Pick up Suzuki Jimny', description: 'Drive to Hotel Bosque del Mar near Playas del Coco' },
+      ]},
+      { type: 'map', origin: 'Daniel Oduber Quirós International Airport', destination: 'Hotel Bosque del Mar, Playa Hermosa', label: 'LIR Airport → Hotel Bosque del Mar · ~30 min' },
+      { type: 'p', text: 'First night on the Pacific coast. Settle in, grab dinner nearby, sleep off the travel.' },
     ],
   },
   {
@@ -31,9 +51,24 @@ export const days = [
     type: 'dive',
     tags: ['Dive'],
     drive: { route: 'Bosque del Mar → Waldorf Astoria', time: '~10 min (after the dive)' },
+    hotel: 'Waldorf Astoria Punta Cacique',
     body: [
-      { type: 'p', text: 'Six-hour, two-tank dive at the Catalina Islands. May is still in the window for giant manta rays, plus eagle rays and whitetip reef sharks.' },
+      { type: 'dive', data: {
+        site: 'Catalina Islands',
+        tanks: '2-tank, 6hr',
+        wildlife: 'Giant mantas',
+        level: 'Intermediate',
+        operator: 'Deep Blue Diving',
+        species: ['Giant Manta Rays', 'Eagle Rays', 'Whitetip Reef Sharks', 'Moray Eels', 'Pufferfish'],
+      }},
+      { type: 'p', text: 'Boat picks up directly from Playas del Coco harbor — Deep Blue Diving runs the trip. May is still in the window for giant manta rays at Catalina.' },
+      { type: 'map', origin: 'Playas del Coco, Costa Rica', destination: 'Islas Catalinas, Costa Rica', mode: 'driving', label: 'Boat route: Playas del Coco → Catalina Islands · ~45 min by boat' },
+      { type: 'highlights', items: [
+        { title: 'Catalina Islands', subtitle: 'Isla Catalina dive site', gradient: 'linear-gradient(135deg, #0d4e6b, #1a8fb5)' },
+        { title: 'Waldorf Astoria', subtitle: 'Home base · 5 nights', gradient: 'linear-gradient(135deg, #2a5538, #3d7a52)' },
+      ]},
       { type: 'p', text: 'After the dive, transfer to the Waldorf Astoria Punta Cacique — home base for the next five nights. Dinner at the hotel.' },
+      { type: 'map', origin: 'Hotel Bosque del Mar, Playa Hermosa', destination: 'Waldorf Astoria Costa Rica, Punta Cacique', label: 'Bosque del Mar → Waldorf Astoria · ~10 min' },
     ],
   },
   {
@@ -44,9 +79,29 @@ export const days = [
     type: 'adventure',
     tags: ['Hike'],
     drive: { route: 'Waldorf → Curubandé', time: '~1 hr 30 min each way' },
+    hotel: 'Waldorf Astoria Punta Cacique',
     body: [
-      { type: 'p', text: 'Morning is the La Leona combo — hike through volcanic canyons, caves, and sulfur-blue river pools to a waterfall tucked inside a cave.' },
-      { type: 'p', text: 'Afternoon quick 20-minute drive to the Las Pailas loop in the national park — bubbling mud pots, fumaroles, volcanic craters, and Rio Negro Hot Springs.' },
+      { type: 'route', stops: [
+        { name: 'Waldorf', driveToNext: '1h30' },
+        { name: 'La Leona', driveToNext: '20min' },
+        { name: 'Las Pailas', driveToNext: '1h30' },
+        { name: 'Waldorf', isHotel: true },
+      ]},
+      { type: 'map', origin: 'Waldorf Astoria Costa Rica, Punta Cacique', destination: 'Rincon de la Vieja National Park', waypoints: ['La Leona Waterfall, Curubandé'], label: 'Waldorf → La Leona → Las Pailas · Round trip' },
+      { type: 'timeline', events: [
+        { time: 'Morning', title: 'La Leona Combo', description: 'Volcanic canyons, caves, sulfur-blue river pools, waterfall inside a cave', highlight: true },
+        { time: 'Afternoon', title: 'Las Pailas Loop', description: 'National park — bubbling mud pots, fumaroles, volcanic craters' },
+        { time: 'Late afternoon', title: 'Río Negro Hot Springs', description: 'Natural volcanic hot springs along the trail' },
+      ]},
+      { type: 'activities', items: [
+        { name: 'La Leona Combo', type: 'hike', duration: '~4 hrs', difficulty: 'Moderate', cost: '$100pp', bgColor: 'bg-coral/10', iconColor: 'text-coral' },
+        { name: 'Las Pailas Loop', type: 'nature', duration: '~2 hrs', difficulty: 'Easy', bgColor: 'bg-jungle-mid/10', iconColor: 'text-jungle-mid' },
+      ]},
+      { type: 'highlights', items: [
+        { title: 'Blue River Pools', subtitle: 'Sulfur-tinted canyon pools', gradient: 'linear-gradient(135deg, #1a7090, #2db5d4)' },
+        { title: 'Cave Waterfall', subtitle: 'Hidden inside volcanic rock', gradient: 'linear-gradient(135deg, #3a3a4e, #5a5a70)' },
+        { title: 'Mud Pots', subtitle: 'Bubbling volcanic mud', gradient: 'linear-gradient(135deg, #8a5c3a, #b87d4e)' },
+      ]},
     ],
   },
   {
@@ -57,8 +112,18 @@ export const days = [
     type: 'dive',
     tags: ['Dive'],
     drive: null,
+    hotel: 'Waldorf Astoria Punta Cacique',
     body: [
-      { type: 'p', text: 'The big one. Eight-hour day, three-tank dive at Islas Murciélagos — this is the bull shark site. Strong currents, big animals.' },
+      { type: 'dive', data: {
+        site: 'Islas Murciélagos (Bat Islands)',
+        tanks: '3-tank, 8hr',
+        wildlife: 'Bull sharks',
+        level: 'Advanced',
+        operator: 'Deep Blue / Rich Coast',
+        species: ['Bull Sharks', 'Giant Mantas', 'Whitetip Reefs', 'Eagle Rays', 'Sea Turtles', 'Nurse Sharks'],
+      }},
+      { type: 'map', origin: 'Playas del Coco, Costa Rica', destination: 'Islas Murcielago, Costa Rica', label: 'Boat route: Playas del Coco → Bat Islands · ~1.5 hrs by boat' },
+      { type: 'p', text: 'The big one. Full-day expedition into open water — strong currents, deep dives, and the chance to see bull sharks up close. The boat leaves from Playas del Coco harbor early morning.' },
       { type: 'p', text: "We'll be dead after this, so just dinner and sleep." },
       { type: 'warning', text: 'Weather-dependent in May. Strong currents — advanced dive. Book early with Deep Blue or Rich Coast.' },
     ],
@@ -71,7 +136,21 @@ export const days = [
     type: 'nature',
     tags: ['Wildlife'],
     drive: { route: 'Waldorf → Palo Verde', time: '~1 hr 20 min each way' },
+    hotel: 'Waldorf Astoria Punta Cacique',
     body: [
+      { type: 'route', stops: [
+        { name: 'Waldorf', driveToNext: '1h20' },
+        { name: 'Palo Verde NP', driveToNext: '1h20' },
+        { name: 'Waldorf', isHotel: true },
+      ]},
+      { type: 'map', origin: 'Waldorf Astoria Costa Rica, Punta Cacique', destination: 'Palo Verde National Park, Costa Rica', label: 'Waldorf → Palo Verde NP · ~1h20 each way' },
+      { type: 'activities', items: [
+        { name: 'Boat Tour', type: 'wildlife', duration: '~3 hrs', difficulty: 'Easy', cost: '$100pp', bgColor: 'bg-gold/10', iconColor: 'text-gold' },
+      ]},
+      { type: 'highlights', items: [
+        { title: 'Tempisque River', subtitle: 'Palo Verde wetlands', gradient: 'linear-gradient(135deg, #1f6e38, #2d9e50)' },
+        { title: 'Roseate Spoonbills', subtitle: 'Pink wading birds', gradient: 'linear-gradient(135deg, #c45a6b, #e07a8f)' },
+      ]},
       { type: 'p', text: '8am boat tour through the Palo Verde wetlands on the Tempisque River. Roseate spoonbills, jabirus, herons, crocodiles, iguanas — tons of wildlife from the boat.' },
       { type: 'p', text: 'Chill afternoon back at the Waldorf.' },
     ],
@@ -84,6 +163,7 @@ export const days = [
     type: 'flex',
     tags: ['Flex'],
     drive: null,
+    hotel: 'Waldorf Astoria Punta Cacique',
     body: [
       { type: 'p', text: "Buffer day after six straight days of going hard. We'll book something Sunday night after Bat Islands based on how we're feeling." },
       { type: 'options', items: ['Horseback riding', 'Sunset catamaran', 'Diamante Eco Park', 'Third dive', 'ATV tour', 'Pool, beach, spa'] },
@@ -97,9 +177,29 @@ export const days = [
     type: 'cave',
     tags: ['Cave', 'Wildlife'],
     drive: { route: 'Waldorf → Barra Honda → Las Pumas → Rio Perdido', time: '~1h30 + ~1h + ~1h' },
+    hotel: 'Rio Perdido',
     body: [
-      { type: 'p', text: 'Morning cave descent at Barra Honda National Park — ladders, headlamps, limestone formations deep underground.' },
-      { type: 'p', text: 'Quick stop at Las Pumas Rescue Center in Cañas (it\'s on the way) to see jaguars, ocelots, and margays. Then continue to Rio Perdido and relax in the pool before dinner.' },
+      { type: 'route', stops: [
+        { name: 'Waldorf', driveToNext: '1h30' },
+        { name: 'Barra Honda', driveToNext: '1h' },
+        { name: 'Las Pumas', driveToNext: '1h' },
+        { name: 'Rio Perdido', isHotel: true },
+      ]},
+      { type: 'map', origin: 'Waldorf Astoria Costa Rica, Punta Cacique', destination: 'Rio Perdido, Bagaces', waypoints: ['Barra Honda National Park', 'Las Pumas Rescue Center, Cañas'], label: 'Waldorf → Barra Honda → Las Pumas → Rio Perdido' },
+      { type: 'timeline', events: [
+        { time: 'Morning', title: 'Barra Honda Cave Descent', description: 'Ladders, headlamps, limestone formations deep underground', highlight: true },
+        { time: 'Midday', title: 'Las Pumas Rescue Center', description: 'Jaguars, ocelots, and margays — it\'s on the way' },
+        { time: 'Afternoon', title: 'Drive to Rio Perdido', description: 'Check in, relax in the pool before dinner' },
+      ]},
+      { type: 'activities', items: [
+        { name: 'Cave Descent', type: 'cave', duration: '~3 hrs', difficulty: 'Moderate', bgColor: 'bg-[#2a2a3e]/10', iconColor: 'text-[#44445a]' },
+        { name: 'Las Pumas', type: 'wildlife', duration: '~1 hr', difficulty: 'Easy', bgColor: 'bg-gold/10', iconColor: 'text-gold' },
+      ]},
+      { type: 'highlights', items: [
+        { title: 'Barra Honda Caves', subtitle: 'Limestone underground', gradient: 'linear-gradient(135deg, #2a2a3e, #44445a)' },
+        { title: 'Las Pumas', subtitle: 'Jaguars & ocelots', gradient: 'linear-gradient(135deg, #8a6b20, #c9a84c)' },
+        { title: 'Rio Perdido', subtitle: 'Thermal canyon resort', gradient: 'linear-gradient(135deg, #6e3a1a, #a85e30)' },
+      ]},
       { type: 'backup', text: 'Backup: Llanos de Cortés waterfall, Las Pumas, and extra time at Rio Perdido.' },
     ],
   },
@@ -111,7 +211,17 @@ export const days = [
     type: 'relax',
     tags: ['Relax'],
     drive: null,
+    hotel: 'Rio Perdido',
     body: [
+      { type: 'activities', items: [
+        { name: 'Canyon Trails', type: 'hike', duration: 'All day', difficulty: 'Easy', bgColor: 'bg-jungle-mid/10', iconColor: 'text-jungle-mid' },
+        { name: 'Thermal River Float', type: 'relax', duration: '~2 hrs', bgColor: 'bg-celeste/10', iconColor: 'text-celeste' },
+        { name: 'Tubing', type: 'relax', duration: '~1 hr', cost: '$70pp', bgColor: 'bg-coral/10', iconColor: 'text-coral' },
+      ]},
+      { type: 'highlights', items: [
+        { title: 'Thermal River', subtitle: 'Natural hot springs canyon', gradient: 'linear-gradient(135deg, #c45a3c, #e07a5f)' },
+        { title: 'Canyon Trails', subtitle: 'Dry forest hiking', gradient: 'linear-gradient(135deg, #2a5538, #3d7a52)' },
+      ]},
       { type: 'p', text: 'Sleep in. Canyon trails, thermal river float, tubing, hot springs — just enjoy the property. Last full day before we start heading home.' },
     ],
   },
@@ -123,9 +233,28 @@ export const days = [
     type: 'adventure',
     tags: ['Hike', 'Birding'],
     drive: { route: 'Rio Perdido → Tenorio', time: '~1 hr 30 min' },
+    hotel: 'Near Bijagua',
     body: [
-      { type: 'p', text: 'Drive to Tenorio Volcano National Park to explore the iconic Río Celeste — the waterfall, Laguna Azul, Los Borbollones, and Los Teñideros.' },
-      { type: 'p', text: 'Stop for a midday lunch, then head to the Heliconias Hanging Bridges for a 2:00 PM walk with a private birding guide.' },
+      { type: 'route', stops: [
+        { name: 'Rio Perdido', driveToNext: '1h30' },
+        { name: 'Tenorio NP', driveToNext: '15min' },
+        { name: 'Heliconias', isHotel: false },
+      ]},
+      { type: 'map', origin: 'Rio Perdido, Bagaces', destination: 'Heliconias Rainforest Lodge, Bijagua', waypoints: ['Tenorio Volcano National Park'], label: 'Rio Perdido → Tenorio NP → Heliconias Bridges' },
+      { type: 'timeline', events: [
+        { time: 'Morning', title: 'Río Celeste Waterfall', description: 'Iconic turquoise waterfall, Laguna Azul, Los Borbollones', highlight: true },
+        { time: 'Midday', title: 'Los Teñideros', description: 'Where two rivers mix to create the blue color' },
+        { time: 'Lunch', title: 'Break in Bijagua', description: 'Local restaurant near the park' },
+        { time: '2:00 PM', title: 'Heliconias Hanging Bridges', description: 'Private birding guide through the canopy' },
+      ]},
+      { type: 'activities', items: [
+        { name: 'Río Celeste Trail', type: 'hike', duration: '~3 hrs', difficulty: 'Moderate', cost: '$100pp', bgColor: 'bg-celeste/10', iconColor: 'text-celeste' },
+        { name: 'Birding Walk', type: 'wildlife', duration: '~2 hrs', cost: '$100pp', bgColor: 'bg-gold/10', iconColor: 'text-gold' },
+      ]},
+      { type: 'highlights', items: [
+        { title: 'Río Celeste', subtitle: 'Turquoise volcanic river', gradient: 'linear-gradient(135deg, #1a8fb5, #4db8c9)' },
+        { title: 'Hanging Bridges', subtitle: 'Canopy-level birding', gradient: 'linear-gradient(135deg, #1f6e38, #2d9e50)' },
+      ]},
     ],
   },
   {
@@ -136,8 +265,20 @@ export const days = [
     type: 'travel',
     tags: ['Travel'],
     drive: { route: 'Bijagua area → LIR', time: '~1 hr 20 min to the airport' },
+    hotel: 'The Georgian, Santa Monica',
     body: [
-      { type: 'p', text: 'Morning drive to Liberia, drop off the Jimny, fly back to LA (AS 1331). Check into The Georgian in Santa Monica and meet Brittany for dinner.' },
+      { type: 'route', stops: [
+        { name: 'Bijagua', driveToNext: '1h20' },
+        { name: 'LIR Airport', driveToNext: 'flight' },
+        { name: 'LAX', driveToNext: 'drive' },
+        { name: 'Santa Monica', isHotel: true },
+      ]},
+      { type: 'map', origin: 'Bijagua, Costa Rica', destination: 'Daniel Oduber Quirós International Airport', label: 'Bijagua → LIR Airport · ~1h20' },
+      { type: 'timeline', events: [
+        { time: 'Morning', title: 'Drive to Liberia', description: 'Drop off the Jimny at the rental office' },
+        { time: 'Afternoon', title: 'Fly LIR → LAX', description: 'Alaska AS 1331' },
+        { time: 'Evening', title: 'The Georgian, Santa Monica', description: 'Check in, then dinner with Brittany' },
+      ]},
     ],
   },
   {
@@ -148,8 +289,10 @@ export const days = [
     type: 'travel',
     tags: ['Travel'],
     drive: null,
+    hotel: null,
     body: [
-      { type: 'p', text: 'Morning drive down the coast. Home.' },
+      { type: 'map', origin: 'The Georgian Hotel, Santa Monica, CA', destination: 'San Diego, CA', label: 'Santa Monica → San Diego · ~2 hrs' },
+      { type: 'p', text: 'Morning drive down the coast. Home. Trip of a lifetime, complete.' },
     ],
   },
 ]
