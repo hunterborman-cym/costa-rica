@@ -7,7 +7,7 @@ export default function JimnyCard() {
         {/* Image */}
         <div
           className="sm:w-48 h-32 sm:h-auto bg-cover bg-center flex-shrink-0"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1675228205797-12a79151cd32?w=400&q=80')` }}
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1624428911304-0245ec2ba09a?w=400&q=80')` }}
         />
         {/* Info */}
         <div className="p-4 flex-1">
