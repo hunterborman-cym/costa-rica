@@ -61,6 +61,9 @@ export default function DayCard({ day, isOpen, onToggle }) {
         ${isOpen ? 'shadow-lg border-border' : 'shadow-sm border-border-light hover:shadow-md'}
       `}
     >
+      {/* Category color strip */}
+      <div className={`h-[3px] w-full ${badgeClass[day.type]}`} />
+
       {/* Header */}
       <button
         onClick={onToggle}

@@ -1,6 +1,8 @@
-export default function BudgetCard({ category, amount, note, items }) {
+export default function BudgetCard({ category, amount, note, items, color }) {
   return (
-    <div className="bg-white border border-border-light rounded-card p-5 shadow-sm">
+    <div className="bg-white border border-border-light rounded-card overflow-hidden shadow-sm">
+      <div className="h-[3px] w-full" style={{ background: color }} />
+      <div className="p-5">
       <p className="font-mono text-[0.56rem] tracking-[0.16em] uppercase text-smoke mb-2">
         {category}
       </p>
@@ -24,6 +26,7 @@ export default function BudgetCard({ category, amount, note, items }) {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   )
 }

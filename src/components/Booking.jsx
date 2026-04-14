@@ -13,14 +13,33 @@ export default function Booking() {
     )
   }
 
+  const checkedCount = checkedIds.length
+  const totalCount = bookingItems.length
+  const pct = Math.round((checkedCount / totalCount) * 100)
+
   return (
     <div id="booking" className="pt-16 pb-16 px-6 md:px-8 max-w-[920px] mx-auto">
-      <p className="font-mono text-[0.58rem] tracking-[0.22em] uppercase text-celeste mb-1">
-        To-Do
-      </p>
-      <h2 className="font-display text-[2rem] font-semibold text-volcanic mb-8">
-        Book in Advance
-      </h2>
+      <div className="flex items-end justify-between mb-8">
+        <div>
+          <p className="font-mono text-[0.58rem] tracking-[0.22em] uppercase text-celeste mb-1">
+            To-Do
+          </p>
+          <h2 className="font-display text-[2rem] font-semibold text-volcanic">
+            Book in Advance
+          </h2>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-[0.6rem] tracking-wider text-smoke">
+            {checkedCount}/{totalCount}
+          </span>
+          <div className="w-24 h-1.5 bg-border-light rounded-full overflow-hidden">
+            <div
+              className="h-full bg-jungle-mid rounded-full transition-all duration-500 ease-out"
+              style={{ width: `${pct}%` }}
+            />
+          </div>
+        </div>
+      </div>
 
       {bookingItems.map(item => (
         <BookingItem
