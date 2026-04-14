@@ -1,6 +1,7 @@
 import ScrollProgress from './components/ScrollProgress'
 import Hero from './components/Hero'
 import Nav from './components/Nav'
+import TripStats from './components/TripStats'
 import Itinerary from './components/Itinerary'
 import Budget from './components/Budget'
 import Flights from './components/Flights'
@@ -15,6 +16,7 @@ export default function App() {
       <Hero />
       <Nav />
       <main>
+        <TripStats />
         <Itinerary />
         <SectionDivider />
         <Budget />
