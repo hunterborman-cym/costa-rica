@@ -15,7 +15,8 @@ export const days = [
         { time: 'Evening', title: 'Airport hotel near LAX', description: 'Check in, crash. Tomorrow we fly.' },
       ]},
       { type: 'map', origin: 'San Diego, CA', destination: 'LAX Airport, Los Angeles, CA', label: 'San Diego → LAX · ~2 hrs' },
-      { type: 'p', text: 'Done with the MCAT. The hardest day is behind us — everything after this is pure reward. Drive to LA, check into the airport hotel, sleep.' },
+      { type: 'quote', text: 'The hardest day is behind us. Everything after this is pure reward.' },
+      { type: 'p', text: 'Done with the MCAT. Drive to LA, check into the airport hotel, sleep. Tomorrow we fly.' },
     ],
   },
   {
@@ -168,7 +169,8 @@ export const days = [
     drive: null,
     hotel: 'Waldorf Astoria Punta Cacique',
     body: [
-      { type: 'p', text: "Buffer day after six straight days of going hard. We'll book something Sunday night after Bat Islands based on how we're feeling." },
+      { type: 'quote', text: "Six straight days of going hard. This is the day we decide what kind of tired we are." },
+      { type: 'p', text: "We'll book something Sunday night after Bat Islands based on how we're feeling. Options range from adrenaline to doing absolutely nothing." },
       { type: 'options', items: ['Horseback riding', 'Sunset catamaran', 'Diamante Eco Park', 'Third dive', 'ATV tour', 'Pool, beach, spa'] },
     ],
   },
